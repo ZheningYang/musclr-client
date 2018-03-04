@@ -1,0 +1,13 @@
+<div class="container">
+  <app-header (sideNavigationToggle)="sideNavigation.toggle()"></app-header>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sideNavigation>
+      <app-side-navigation-list (closeSideNavigation)="sideNavigation.close()"></app-side-navigation-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
