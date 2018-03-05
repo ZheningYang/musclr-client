@@ -1,23 +1,23 @@
-<mat-toolbar color="primary">
+<mat-toolbar color='primary'>
   <div fxHide.gt-xs>
-    <button mat-icon-button (click)="onToggleSideNavigation()">
+    <button mat-icon-button (click)='onToggleSideNavigation()'>
       <mat-icon>menu</mat-icon>
     </button>
   </div>
   <span>MusclR</span>
-  <div fxFlex fxLayout fxLayoutGap="10px" fxLayoutAlign="flex-end" fxHide.xs>
+  <div fxFlex fxLayout fxLayoutGap='10px' fxLayoutAlign='flex-end' fxHide.xs>
     <button mat-button>News</button>
     <button mat-button>Communauté</button>
     <button mat-button>Exercices</button>
     <button mat-button>Séances</button>
-    <button mat-button [matMenuTriggerFor]="menu">Mon Profil</button>
-    <mat-menu #menu="matMenu" yPosition="below" [overlapTrigger]="false" color="primary">
+    <button mat-button [matMenuTriggerFor]='menu' *ngIf='isAuthenticated'>Mon Profil</button>
+    <mat-menu #menu='matMenu' yPosition='below' [overlapTrigger]='false' color='primary' >
       <button mat-menu-item>Mon Profil</button>
       <button mat-menu-item>Mes Séances</button>
       <button mat-menu-item>Mon Planning</button>
       <button mat-menu-item>Mes Amis</button>
-      <button mat-menu-item>Se Déconnecter</button>
+      <button mat-menu-item (click)='logout()'>Se Déconnecter</button>
     </mat-menu>
-    <button mat-button routerLink="/login">Connexion</button>
+    <button mat-button routerLink='/login'>Connexion</button>
   </div>
 </mat-toolbar>

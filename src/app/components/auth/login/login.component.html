@@ -11,12 +11,12 @@
           <mat-error *ngIf="loginForm.get('email').errors">{{getEmailErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Mot de passe" formControlName="password">
+          <input matInput type="password" placeholder="Mot de passe" formControlName="password">
           <mat-error *ngIf="loginForm.get('password').errors">{{getPasswordErrorMessage()}}</mat-error>
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions fxLayoutAlign="end">
-        <button type="submit" mat-button>Suivant</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">Suivant</button>
       </mat-card-actions>
     </mat-card>
   </form>

@@ -11,6 +11,9 @@ import {LoginComponent} from './components/auth/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {AppRoutingModule} from './app.routing';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthService} from './components/auth/auth.service';
+import {AuthInterceptor} from './components/auth/auth.interceptor';
 
 
 @NgModule({
@@ -26,10 +29,15 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    HttpClientModule,
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [],
+
+  providers: [
+    AuthService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
