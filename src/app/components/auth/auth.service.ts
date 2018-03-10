@@ -6,12 +6,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Router} from '@angular/router';
+import {RequestOptions} from './request-options.interface';
 
 @Injectable()
 export class AuthService {
 
   private usersUrl = environment.serverUrl + 'users/';
-  private httpOptions = {
+  private httpOptions: RequestOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
