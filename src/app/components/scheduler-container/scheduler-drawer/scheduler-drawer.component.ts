@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-scheduler-drawer',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedulerDrawerComponent implements OnInit {
 
-  constructor() { }
+  public showFiller = false;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
