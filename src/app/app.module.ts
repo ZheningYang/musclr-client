@@ -14,6 +14,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthService} from './components/auth/auth.service';
 import {AuthInterceptor} from './components/auth/auth.interceptor';
+import {SchedulerComponent} from './components/scheduler-container/scheduler/scheduler.component';
+import {SchedulerContainerComponent} from './components/scheduler-container/scheduler-container.component';
+import { SchedulerDrawerComponent } from './components/scheduler-container/scheduler-drawer/scheduler-drawer.component';
 
 
 @NgModule({
@@ -23,6 +26,9 @@ import {AuthInterceptor} from './components/auth/auth.interceptor';
     SideNavigationListComponent,
     LoginComponent,
     HomeComponent,
+    SchedulerComponent,
+    SchedulerContainerComponent,
+    SchedulerDrawerComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" fxLayout="column">
   <app-header (sideNavigationToggle)="sideNavigation.toggle()"></app-header>
 
-  <mat-sidenav-container>
+  <mat-sidenav-container fxFlex="flex">
     <mat-sidenav #sideNavigation>
       <app-side-navigation-list (closeSideNavigation)="sideNavigation.close()"></app-side-navigation-list>
     </mat-sidenav>

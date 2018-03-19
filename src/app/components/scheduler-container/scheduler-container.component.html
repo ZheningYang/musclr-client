@@ -1,0 +1,13 @@
+<mat-drawer-container autosize fullscreen>
+  <mat-drawer #drawer mode="over" position="end">
+
+    <app-scheduler-drawer></app-scheduler-drawer>
+  </mat-drawer>
+
+  <app-scheduler></app-scheduler>
+
+  <button class="search-button" mat-fab color="primary" (click)="drawer.toggle()">
+    <mat-icon>search</mat-icon>
+  </button>
+
+</mat-drawer-container>

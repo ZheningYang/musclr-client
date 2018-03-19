@@ -28,7 +28,7 @@ export class AuthService {
 
     return this.httpClient.post(this.usersUrl + 'login', body, this.httpOptions)
       .map((httpResponse: HttpResponse<any>) => {
-        localStorage.setItem('token', httpResponse.headers.get('X-Authorization'));
+        localStorage.setItem('token', httpResponse.headers.get('x-authorization'));
         return httpResponse.body;
       })
       .catch((error: any) => Observable.throw(error || 'Server error'));
