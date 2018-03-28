@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {MaterialModule} from './material.module';
@@ -16,8 +16,9 @@ import {AuthService} from './components/auth/auth.service';
 import {AuthInterceptor} from './components/auth/auth.interceptor';
 import {SchedulerComponent} from './components/scheduler-container/scheduler/scheduler.component';
 import {SchedulerContainerComponent} from './components/scheduler-container/scheduler-container.component';
-import { SchedulerDrawerComponent } from './components/scheduler-container/scheduler-drawer/scheduler-drawer.component';
-
+import {SchedulerDrawerComponent} from './components/scheduler-container/scheduler-drawer/scheduler-drawer.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import { FooterComponent } from './components/navigation/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SchedulerDrawerComponent } from './components/scheduler-container/sched
     HomeComponent,
     SchedulerComponent,
     SchedulerContainerComponent,
-    SchedulerDrawerComponent
+    SchedulerDrawerComponent,
+    FooterComponent
   ],
   imports: [
     AppRoutingModule,
@@ -37,9 +39,12 @@ import { SchedulerDrawerComponent } from './components/scheduler-container/sched
     FlexLayoutModule,
     HttpClientModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MDBBootstrapModule.forRoot()
   ],
-
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ],
   providers: [
     AuthService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+$dark-bg : #212121;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.black {
+  background-color: $dark-bg;
+}
+
+// for some fucking reason the navbar part has to be there, I hate you mdb
+.navbar {
+  background-color: transparent;
+}
+.top-nav-collapse {
+  background-color: $dark-bg !important;
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: $dark-bg !important;
+  }
+}

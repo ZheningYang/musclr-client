@@ -1,23 +1,40 @@
-<mat-toolbar color='primary'>
-  <div fxHide.gt-xs>
-    <button mat-icon-button (click)='onToggleSideNavigation()'>
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
-  <span>MusclR</span>
-  <div fxFlex fxLayout fxLayoutGap='10px' fxLayoutAlign='flex-end' fxHide.xs>
-    <button mat-button>News</button>
-    <button mat-button>Communauté</button>
-    <button mat-button>Exercices</button>
-    <button mat-button>Séances</button>
-    <button mat-button [matMenuTriggerFor]='menu' *ngIf='isAuthenticated'>Mon Profil</button>
-    <mat-menu #menu='matMenu' yPosition='below' [overlapTrigger]='false' color='primary' >
-      <button mat-menu-item>Mon Profil</button>
-      <button mat-menu-item>Mes Séances</button>
-      <button mat-menu-item routerLink='/scheduler'>Mon Planning</button>
-      <button mat-menu-item>Mes Amis</button>
-      <button mat-menu-item (click)='logout()'>Se Déconnecter</button>
-    </mat-menu>
-    <button mat-button routerLink='/login'>Connexion</button>
-  </div>
-</mat-toolbar>
+<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" [containerInside]="false">
+  <logo>
+    <a class="logo navbar-brand" routerLink="/"><strong>MusclR</strong></a>
+  </logo>
+  <links>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active waves-light" mdbRippleRadius>
+        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link">News</a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link">Communauté</a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link">Exercices</a>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius>
+        <a class="nav-link">Séances</a>
+      </li>
+      <li class="nav-item dropdown btn-group" dropdown>
+        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>
+          Mon Profil<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary dropdown-menu-right" role="menu">
+          <a class="dropdown-item waves-light" mdbRippleRadius>Mes statistiques</a>
+          <a class="dropdown-item waves-light" routerLink="/scheduler" mdbRippleRadius>Mon planning</a>
+          <a class="dropdown-item waves-light" mdbRippleRadius>Mes amis</a>
+          <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbRippleRadius>Se déconnecter</a>
+        </div>
+      </li>
+      <li class="nav-item waves-light" mdbRippleRadius *ngIf="!isAuthenticated">
+        <a class="nav-link" routerLink="/login">Se connecter</a>
+      </li>
+    </ul>
+  </links>
+</mdb-navbar>
+
+

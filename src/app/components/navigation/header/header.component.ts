@@ -4,10 +4,9 @@ import {AuthService} from '../../auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output() sideNavigationToggle = new EventEmitter<void>();
 
   constructor(public authService: AuthService) {
   }
@@ -20,10 +19,8 @@ export class HeaderComponent implements OnInit {
   }
 
   get isAuthenticated(): boolean {
+    console.log(this.authService.isAuthenticated());
     return this.authService.isAuthenticated();
   }
 
-  onToggleSideNavigation() {
-    this.sideNavigationToggle.emit();
-  }
 }
