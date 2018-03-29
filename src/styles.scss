@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-$dark-bg : #212121;
+$dark-bg : #000000;
 
 html, body {
   margin: 0;
@@ -23,4 +23,8 @@ html, body {
   .navbar {
     background-color: $dark-bg !important;
   }
+}
+
+.dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover {
+  background-color: $dark-bg !important;
 }

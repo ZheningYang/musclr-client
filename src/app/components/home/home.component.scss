@@ -1,15 +1,32 @@
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-
-  > .col,
-  > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-}
-
-.centered-section {
+#centered-section {
   text-align: center;
 }
+
+#splitted-section {
+  .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .workout-left {
+    background: url("../../../assets/images/workout_left.jpg") no-repeat center right;
+    min-height: 700px;
+  }
+}
+
+
+
