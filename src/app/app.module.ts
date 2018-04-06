@@ -19,6 +19,7 @@ import {SchedulerContainerComponent} from './components/scheduler-container/sche
 import {SchedulerDrawerComponent} from './components/scheduler-container/scheduler-drawer/scheduler-drawer.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { FooterComponent } from './components/navigation/footer/footer.component';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FooterComponent } from './components/navigation/footer/footer.component
     SchedulerComponent,
     SchedulerContainerComponent,
     SchedulerDrawerComponent,
-    FooterComponent
+    FooterComponent,
+    NewsComponent
   ],
   imports: [
     AppRoutingModule,

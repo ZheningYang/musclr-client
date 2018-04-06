@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-scheduler-container',
-  templateUrl: './scheduler-container.component.html',
-  styleUrls: ['./scheduler-container.component.scss']
+  selector: 'app-news',
+  templateUrl: './news.component.html',
+  styleUrls: ['./news.component.scss']
 })
-export class SchedulerContainerComponent implements OnInit, OnDestroy {
+export class NewsComponent implements OnInit, OnDestroy {
 
   constructor() {
   }
