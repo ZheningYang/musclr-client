@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {MaterialModule} from './material.module';
 import {HeaderComponent} from './components/navigation/header/header.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -10,7 +9,7 @@ import {SideNavigationListComponent} from './components/navigation/side-navigati
 import {LoginComponent} from './components/auth/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {AppRoutingModule} from './app.routing';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthService} from './components/auth/auth.service';
 import {AuthInterceptor} from './components/auth/auth.interceptor';
@@ -18,8 +17,10 @@ import {SchedulerComponent} from './components/scheduler-container/scheduler/sch
 import {SchedulerContainerComponent} from './components/scheduler-container/scheduler-container.component';
 import {SchedulerDrawerComponent} from './components/scheduler-container/scheduler-drawer/scheduler-drawer.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import { FooterComponent } from './components/navigation/footer/footer.component';
-import { NewsComponent } from './components/news/news.component';
+import {FooterComponent} from './components/navigation/footer/footer.component';
+import {NewsComponent} from './components/news/news.component';
+import {MatSidenavModule} from '@angular/material';
+import { CommunityComponent } from './components/community/community.component';
 
 @NgModule({
   declarations: [
@@ -32,16 +33,17 @@ import { NewsComponent } from './components/news/news.component';
     SchedulerContainerComponent,
     SchedulerDrawerComponent,
     FooterComponent,
-    NewsComponent
+    NewsComponent,
+    CommunityComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     HttpClientModule,
-    MaterialModule,
+    FormsModule,
     ReactiveFormsModule,
+    MatSidenavModule,
     MDBBootstrapModule.forRoot()
   ],
   schemas: [

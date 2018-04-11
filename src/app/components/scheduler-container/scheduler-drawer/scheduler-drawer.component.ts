@@ -7,8 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SchedulerDrawerComponent implements OnInit {
 
-  public showFiller = false;
-
   constructor() {
   }
 
