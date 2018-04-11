@@ -3,7 +3,6 @@ import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/navigation/header/header.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SideNavigationListComponent} from './components/navigation/side-navigation-list/side-navigation-list.component';
 import {LoginComponent} from './components/auth/login/login.component';
@@ -20,7 +19,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {FooterComponent} from './components/navigation/footer/footer.component';
 import {NewsComponent} from './components/news/news.component';
 import {MatSidenavModule} from '@angular/material';
-import { CommunityComponent } from './components/community/community.component';
+import {CommunityComponent} from './components/community/community.component';
 
 @NgModule({
   declarations: [
