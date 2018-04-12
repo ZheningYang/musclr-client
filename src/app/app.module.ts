@@ -20,6 +20,7 @@ import {FooterComponent} from './components/navigation/footer/footer.component';
 import {NewsComponent} from './components/news/news.component';
 import {MatSidenavModule} from '@angular/material';
 import {CommunityComponent} from './components/community/community.component';
+import {SchedulerService} from './components/scheduler-container/scheduler.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {CommunityComponent} from './components/community/community.component';
   ],
   providers: [
     AuthService,
+    SchedulerService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]

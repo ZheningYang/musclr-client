@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // TODO reimplement those methods
   getEmailErrorMessage() {
     return this.loginForm.get('email').hasError('required') ? 'Entrez un email' :
       this.loginForm.get('email').hasError('email') ? 'Email invalide' : '';

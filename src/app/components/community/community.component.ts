@@ -7,7 +7,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 })
 export class CommunityComponent implements OnInit, OnDestroy {
 
-  public checkModel: any = { bronze: false, silver: false, gold: false };
+  public checkModel: any = {bronze: false, silver: false, gold: false};
 
   constructor() {
   }
@@ -20,4 +20,5 @@ export class CommunityComponent implements OnInit, OnDestroy {
     (document.getElementsByClassName('navbar').item(0) as HTMLElement).style.backgroundColor = 'transparent';
   }
 
+  // TODO add some pagination
 }

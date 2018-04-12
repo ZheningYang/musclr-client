@@ -1,3 +1,5 @@
+// custom interface so that angular won't complain while building the app (build != serve)
+
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 
 export interface RequestOptions {
