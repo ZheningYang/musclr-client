@@ -1,0 +1,15 @@
+<mat-drawer-container fullscreen id="curtain" style="margin-top: 64px">
+  <mat-drawer #drawer mode="over" position="end">
+    <app-administration-drawer></app-administration-drawer>
+  </mat-drawer>
+
+  <graph [nodes]="nodes" [links]="links"></graph>
+
+  <button class="btn btn-elegant waves-light search-button" (click)="drawer.toggle()">
+    <i class="fa fa-search" aria-hidden="true"></i>
+  </button>
+
+</mat-drawer-container>
+
+<!--bullshit div to push the footer under the scheduler (which position is absolute)-->
+<div style="height: 100vh"></div>

@@ -7,6 +7,7 @@ import {AuthGuard} from './components/auth/auth-guard.service';
 import {SchedulerContainerComponent} from './components/scheduler-container/scheduler-container.component';
 import {NewsComponent} from './components/news/news.component';
 import {CommunityComponent} from './components/community/community.component';
+import {AdministrationComponent} from './components/administration/administration.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'news', component: NewsComponent},
   {path: 'scheduler', component: SchedulerContainerComponent, canActivate: [AuthGuard]},
+  {path: 'administration', component: AdministrationComponent},
 ];
 
 @NgModule({
