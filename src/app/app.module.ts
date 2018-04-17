@@ -27,6 +27,7 @@ import {GraphComponent} from './components/administration/visuals/graph/graph.co
 import {LinkVisualComponent, NodeVisualComponent} from './components/administration/visuals/shared';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { AdministrationDrawerComponent } from './components/administration/administration-drawer/administration-drawer.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AdministrationDrawerComponent } from './components/administration/admin
     LinkVisualComponent,
     NodeVisualComponent,
     AdministrationComponent,
-    AdministrationDrawerComponent
+    AdministrationDrawerComponent,
+    ProfileComponent
   ],
   imports: [
     AppRoutingModule,

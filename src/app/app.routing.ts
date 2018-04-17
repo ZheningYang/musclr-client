@@ -8,6 +8,7 @@ import {SchedulerContainerComponent} from './components/scheduler-container/sche
 import {NewsComponent} from './components/news/news.component';
 import {CommunityComponent} from './components/community/community.component';
 import {AdministrationComponent} from './components/administration/administration.component';
+import {ProfileComponent} from './components/profile/profile.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'news', component: NewsComponent},
   {path: 'scheduler', component: SchedulerContainerComponent, canActivate: [AuthGuard]},
   {path: 'administration', component: AdministrationComponent},
+  {path: 'profile', component: ProfileComponent},
 ];
 
 @NgModule({

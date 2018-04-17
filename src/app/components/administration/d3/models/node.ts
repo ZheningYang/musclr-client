@@ -13,12 +13,14 @@ export class Node implements d3.SimulationNodeDatum {
   label: string;
   level: number;
   normal = 0;
+  color: string;
 
   constructor(id, group, label, level) {
     this.id = id;
     this.group = group;
     this.label = label;
     this.level = level;
+    this.color = this.level === 1 ? 'red' : 'gray';
   }
 
   // normal = () => {
@@ -34,7 +36,7 @@ export class Node implements d3.SimulationNodeDatum {
     return (30 * this.normal + 10) + 'px';
   }
 
-  get color() {
-    return this.level === 1 ? 'red' : 'gray'
-  }
+  // get color() {
+  //   return this.level === 1 ? 'red' : 'gray';
+  // }
 }

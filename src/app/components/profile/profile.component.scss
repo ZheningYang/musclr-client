@@ -1,0 +1,62 @@
+#profile {
+
+  box-sizing: border-box;
+  min-height: 100vmin;
+
+  .container {
+    max-width: 80%;
+  }
+
+  .icons-sm {
+    padding: .5rem;
+    margin: .5rem;
+    font-size: 1.2rem;
+  }
+  .li-ic {
+    color: #0082ca !important;
+  }
+
+  .fb-ic {
+    color: #3b5998 !important;
+  }
+
+  .tw-ic {
+    color: #55acee !important;
+  }
+
+  .chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #eceff1;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+  }
+
+  .chip img {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+  }
+
+  .rating {
+    color: #ffa000;
+    list-style-type: none;
+    padding: 0;
+    li {
+      display: inline-block;
+    }
+  }
+
+  .carousel-caption{
+    color: black;
+  }
+
+}

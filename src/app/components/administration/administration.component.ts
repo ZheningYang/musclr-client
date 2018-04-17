@@ -1,5 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Link, Node} from './d3/models';
+import {GraphComponent} from './visuals/graph/graph.component';
 
 @Component({
   selector: 'app-administration',
@@ -41,6 +42,22 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     {target: 'fish', source: 'pike', strength: 0.4},
   ];
 
+  bonusNodesInput = [
+    {id: 'human', group: 0, label: 'Humans', level: 1},
+    {id: 'zhening', group: 0, label: 'Zhening', level: 2},
+    {id: 'rukiye', group: 0, label: 'Rukiye', level: 2},
+  ];
+
+  bonusLinksInput = [
+    {target: 'animal', source: 'human', strength: 0.7},
+
+    {target: 'human', source: 'zhening', strength: 0.4},
+    {target: 'human', source: 'rukiye', strength: 0.4},
+
+  ];
+
+  @ViewChild(GraphComponent) graph: GraphComponent;
+
   ngOnInit() {
     (document.getElementsByClassName('navbar').item(0) as HTMLElement).style.backgroundColor = 'black';
   }
@@ -58,6 +75,24 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     this.linksInput.forEach(function (link) {
       self.links.push(new Link(link.source, link.target, link.strength));
     });
+  }
+
+  changeNodeColor() {
+    // this.nodes.forEach(function (node) {
+    //   node.color = 'black';
+    // });
+
+    const self = this;
+    this.bonusNodesInput.forEach(function (node) {
+      self.nodes.push(new Node(node.id, node.group, node.label, node.level));
+    });
+    this.graph.graph.initNodes();
+
+    this.bonusLinksInput.forEach(function (link) {
+      self.links.push(new Link(link.source, link.target, link.strength));
+    });
+    this.graph.graph.initLinks();
+
   }
 
 }
