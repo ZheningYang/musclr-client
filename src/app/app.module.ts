@@ -28,6 +28,7 @@ import {LinkVisualComponent, NodeVisualComponent} from './components/administrat
 import { AdministrationComponent } from './components/administration/administration.component';
 import { AdministrationDrawerComponent } from './components/administration/administration-drawer/administration-drawer.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ExercisesComponent } from './components/exercises/exercises.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     NodeVisualComponent,
     AdministrationComponent,
     AdministrationDrawerComponent,
-    ProfileComponent
+    ProfileComponent,
+    ExercisesComponent
   ],
   imports: [
     AppRoutingModule,

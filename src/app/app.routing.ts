@@ -9,16 +9,18 @@ import {NewsComponent} from './components/news/news.component';
 import {CommunityComponent} from './components/community/community.component';
 import {AdministrationComponent} from './components/administration/administration.component';
 import {ProfileComponent} from './components/profile/profile.component';
+import {ExercisesComponent} from './components/exercises/exercises.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'administration', component: AdministrationComponent},
   {path: 'community', component: CommunityComponent},
+  {path: 'exercises', component: ExercisesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'news', component: NewsComponent},
-  {path: 'scheduler', component: SchedulerContainerComponent, canActivate: [AuthGuard]},
-  {path: 'administration', component: AdministrationComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'scheduler', component: SchedulerContainerComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
