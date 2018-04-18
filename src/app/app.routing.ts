@@ -7,14 +7,16 @@ import {AuthGuard} from './components/auth/auth-guard.service';
 import {SchedulerContainerComponent} from './components/scheduler-container/scheduler-container.component';
 import {NewsComponent} from './components/news/news.component';
 import {CommunityComponent} from './components/community/community.component';
-import {AdministrationComponent} from './components/administration/administration.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ExercisesComponent} from './components/exercises/exercises.component';
+import {GraphDisplayComponent} from './components/administration/graph-display/graph-display.component';
+import {AdministrationComponent} from './components/administration/administration.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'administration', component: AdministrationComponent},
+  {path: 'graph', component: GraphDisplayComponent},
   {path: 'community', component: CommunityComponent},
   {path: 'exercises', component: ExercisesComponent},
   {path: 'login', component: LoginComponent},
