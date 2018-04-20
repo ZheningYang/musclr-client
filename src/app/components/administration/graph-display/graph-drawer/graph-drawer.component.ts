@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-administration-drawer',
+  selector: 'app-graph-drawer',
   templateUrl: './graph-drawer.component.html',
   styleUrls: ['./graph-drawer.component.scss']
 })

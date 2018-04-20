@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:3000/'
+  serverUrl: 'http://localhost:3000/',
+  neo4jUrl: 'http://localhost:8080/'
 };

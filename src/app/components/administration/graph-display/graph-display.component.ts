@@ -2,9 +2,11 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Link, Node} from './d3/models';
 import {GraphComponent} from './visuals/graph/graph.component';
+import {Neo4jService} from './neo4j.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-administration',
+  selector: 'app-graph-display',
   templateUrl: './graph-display.component.html',
   styleUrls: ['./graph-display.component.scss']
 })
@@ -28,20 +30,20 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
     {id: 'pike', group: 2, label: 'Pikes', level: 2}
   ];
 
-  linksInput = [
-    {target: 'animal', source: 'mammal', strength: 0.7},
-    {target: 'animal', source: 'insect', strength: 0.7},
-    {target: 'animal', source: 'fish', strength: 0.7},
-
-    {target: 'mammal', source: 'dog', strength: 0.4},
-    {target: 'mammal', source: 'cat', strength: 0.4},
-    {target: 'mammal', source: 'fox', strength: 0.4},
-    {target: 'mammal', source: 'elk', strength: 0.4},
-    {target: 'insect', source: 'ant', strength: 0.4},
-    {target: 'insect', source: 'bee', strength: 0.4},
-    {target: 'fish', source: 'carp', strength: 0.4},
-    {target: 'fish', source: 'pike', strength: 0.4},
-  ];
+  // linksInput = [
+  //   {target: 'animal', source: 'mammal', strength: 0.7},
+  //   {target: 'animal', source: 'insect', strength: 0.7},
+  //   {target: 'animal', source: 'fish', strength: 0.7},
+  //
+  //   {target: 'mammal', source: 'dog', strength: 0.4},
+  //   {target: 'mammal', source: 'cat', strength: 0.4},
+  //   {target: 'mammal', source: 'fox', strength: 0.4},
+  //   {target: 'mammal', source: 'elk', strength: 0.4},
+  //   {target: 'insect', source: 'ant', strength: 0.4},
+  //   {target: 'insect', source: 'bee', strength: 0.4},
+  //   {target: 'fish', source: 'carp', strength: 0.4},
+  //   {target: 'fish', source: 'pike', strength: 0.4},
+  // ];
 
   bonusNodesInput = [
     {id: 'human', group: 0, label: 'Humans', level: 1},
@@ -50,33 +52,69 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
   ];
 
   bonusLinksInput = [
-    {target: 'animal', source: 'human', strength: 0.7},
+    {target: 'animal', source: 'human', label: 0.7},
 
-    {target: 'human', source: 'zhening', strength: 0.4},
-    {target: 'human', source: 'rukiye', strength: 0.4},
+    {target: 'human', source: 'zhening', label: 0.4},
+    {target: 'human', source: 'rukiye', label: 0.4},
 
   ];
 
   @ViewChild(GraphComponent) graph: GraphComponent;
 
+  constructor(private neo4jService: Neo4jService) {
+    // const self = this;
+    // this.neo4jService.getUsers()
+    //   .subscribe((data: { links: Link[], nodes: Node[] }) => {
+    //       data.nodes.forEach(function (node) {
+    //         self.nodes.push(new Node(node.id, node.group, node.label, node.level));
+    //       });
+    //       // this.graph.forceDirectedGraph.initNodes();
+    //
+    //       data.links.forEach(function (link) {
+    //         self.links.push(new Link(link.source, link.target, link.strength));
+    //       });
+    //
+    //       this.graph.forceDirectedGraph.initSimulation(this.graph.options);
+    //     },
+    //     error => Observable.throw(error || 'Server error')
+    //   );
+
+
+    // this.nodesInput.forEach(function (node) {
+    //   self.nodes.push(new Node(node.id, node.group, node.label, node.level));
+    // });
+    //
+    // this.linksInput.forEach(function (link) {
+    //   self.links.push(new Link(link.source, link.target, link.strength));
+    // });
+  }
+
   ngOnInit() {
     (document.getElementsByClassName('navbar').item(0) as HTMLElement).style.backgroundColor = 'black';
+    const self = this;
+
+    this.neo4jService.getUsers()
+      .subscribe((data: { links: Link[], nodes: Node[] }) => {
+
+          data.nodes.forEach(function (node) {
+            self.nodes.push(new Node(node.id, node.group, node.username, node.level));
+          });
+          this.graph.forceDirectedGraph.initNodes();
+
+          data.links.forEach(function (link) {
+            self.links.push(new Link(link.source, link.target, link.label));
+          });
+
+          this.graph.forceDirectedGraph.initLinks();
+        },
+        error => Observable.throw(error || 'Server error')
+      );
   }
 
   ngOnDestroy() {
     (document.getElementsByClassName('navbar').item(0) as HTMLElement).style.backgroundColor = 'transparent';
   }
 
-  constructor() {
-    const self = this;
-    this.nodesInput.forEach(function (node) {
-      self.nodes.push(new Node(node.id, node.group, node.label, node.level));
-    });
-
-    this.linksInput.forEach(function (link) {
-      self.links.push(new Link(link.source, link.target, link.strength));
-    });
-  }
 
   changeNodeColor() {
     // this.nodes.forEach(function (node) {
@@ -90,7 +128,7 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
     this.graph.forceDirectedGraph.initNodes();
 
     this.bonusLinksInput.forEach(function (link) {
-      self.links.push(new Link(link.source, link.target, link.strength));
+      self.links.push(new Link(link.source, link.target, link.label));
     });
     this.graph.forceDirectedGraph.initLinks();
 

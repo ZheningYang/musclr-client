@@ -6,7 +6,7 @@ import {EventEmitter} from '@angular/core';
 const FORCES = {
   LINKS: 0.2,
   COLLISION: 1,
-  CHARGE: -20
+  CHARGE: -200
 };
 
 export class ForceDirectedGraph {
@@ -19,18 +19,17 @@ export class ForceDirectedGraph {
   constructor(nodes, links, options: { width, height }) {
     this.nodes = nodes;
     this.links = links;
-
     this.initSimulation(options);
   }
 
-  connectNodes(source, target, strength) {
+  connectNodes(source, target, label) {
     let link;
 
     if (!this.nodes[source] || !this.nodes[target]) {
       throw new Error('One of the nodes does not exist');
     }
 
-    link = new Link(source, target, strength);
+    link = new Link(source, target, label);
     this.simulation.stop();
     this.links.push(link);
     this.simulation.alphaTarget(0.3).restart();

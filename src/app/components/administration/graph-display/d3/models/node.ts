@@ -8,6 +8,8 @@ export class Node implements d3.SimulationNodeDatum {
   fx?: number | null;
   fy?: number | null;
 
+  username?: string;
+
   id: string;
   group: string;
   label: string;
@@ -20,7 +22,17 @@ export class Node implements d3.SimulationNodeDatum {
     this.group = group;
     this.label = label;
     this.level = level;
-    this.color = this.level === 1 ? 'red' : 'gray';
+    switch (level) {
+      case 'Gold':
+        this.color = '#D4AF37';
+        break;
+      case 'Silver':
+        this.color = '#C0C0C0';
+        break;
+      case 'Bronze':
+        this.color = '#CD7F32';
+        break;
+    }
   }
 
   // normal = () => {

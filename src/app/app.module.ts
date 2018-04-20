@@ -1,4 +1,3 @@
-///<reference path="components/administration/graph-display/d3/directives/draggable.directive.ts"/>
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
@@ -24,13 +23,14 @@ import {CommunityComponent} from './components/community/community.component';
 import {SchedulerService} from './components/scheduler-container/scheduler.service';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ExercisesComponent} from './components/exercises/exercises.component';
-import { AdministrationComponent } from './components/administration/administration.component';
+import {AdministrationComponent} from './components/administration/administration.component';
 import {DraggableDirective, ZoomableDirective} from './components/administration/graph-display/d3/directives';
 import {LinkVisualComponent, NodeVisualComponent} from './components/administration/graph-display/visuals/shared';
 import {GraphDrawerComponent} from './components/administration/graph-display/graph-drawer/graph-drawer.component';
-import {GraphDisplayComponent} from './components/administration/graph-display/graph-display.component';
 import {GraphComponent} from './components/administration/graph-display/visuals/graph/graph.component';
 import {D3Service} from './components/administration/graph-display/d3';
+import {Neo4jService} from './components/administration/graph-display/neo4j.service';
+import {GraphDisplayComponent} from './components/administration/graph-display/graph-display.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import {D3Service} from './components/administration/graph-display/d3';
     GraphDrawerComponent,
     ProfileComponent,
     ExercisesComponent,
-    AdministrationComponent
+    AdministrationComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -73,6 +73,7 @@ import {D3Service} from './components/administration/graph-display/d3';
     AuthService,
     SchedulerService,
     D3Service,
+    Neo4jService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]

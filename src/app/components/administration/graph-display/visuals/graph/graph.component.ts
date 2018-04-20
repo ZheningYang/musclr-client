@@ -9,7 +9,7 @@ import {D3Service, ForceDirectedGraph} from '../../d3';
       <g [zoomableOf]="svg">
         <g [linkVisual]="link" *ngFor="let link of links"></g>
         <g [nodeVisual]="node" *ngFor="let node of nodes"
-           [draggableNode]="node" [draggableInGraph]="graph"></g>
+           [draggableNode]="node" [draggableInGraph]="forceDirectedGraph"></g>
       </g>
     </svg>
   `,
