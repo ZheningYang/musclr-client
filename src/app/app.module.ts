@@ -21,13 +21,6 @@ import {NewsComponent} from './components/news/news.component';
 import {MatSidenavModule} from '@angular/material';
 import {CommunityComponent} from './components/community/community.component';
 import {SchedulerService} from './components/scheduler-container/scheduler.service';
-import {ZoomableDirective, DraggableDirective} from './components/administration/d3/directives/';
-import {D3Service} from './components/administration/d3/';
-import {GraphComponent} from './components/administration/visuals/graph/graph.component';
-import {LinkVisualComponent, NodeVisualComponent} from './components/administration/visuals/shared';
-import { AdministrationComponent } from './components/administration/administration.component';
-import { AdministrationDrawerComponent } from './components/administration/administration-drawer/administration-drawer.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ExercisesComponent} from './components/exercises/exercises.component';
@@ -63,7 +56,6 @@ import {GraphDisplayComponent} from './components/administration/graph-display/g
     ProfileComponent,
     ExercisesComponent,
     AdministrationComponent,
-    AdministrationDrawerComponent,
     ProfileComponent,
     DashboardComponent
   ],
