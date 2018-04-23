@@ -11,7 +11,8 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {ExercisesComponent} from './components/exercises/exercises.component';
 import {GraphDisplayComponent} from './components/administration/graph-display/graph-display.component';
 import {AdministrationComponent} from './components/administration/administration.component';
-
+import {ProfileComponent} from './components/profile/profile.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,6 +24,9 @@ const routes: Routes = [
   {path: 'news', component: NewsComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'scheduler', component: SchedulerContainerComponent, canActivate: [AuthGuard]},
+  {path: 'administration', component: AdministrationComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'dashboard', component: DashboardComponent},
 ];
 
 @NgModule({
