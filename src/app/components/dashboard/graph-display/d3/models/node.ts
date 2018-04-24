@@ -8,6 +8,7 @@ export class Node implements d3.SimulationNodeDatum {
   fx?: number | null;
   fy?: number | null;
 
+  // user
   username?: string;
 
   id: string;

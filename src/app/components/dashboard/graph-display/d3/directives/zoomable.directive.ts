@@ -1,5 +1,5 @@
-import { Directive, Input, ElementRef, OnInit } from '@angular/core';
 import { D3Service } from '../d3.service';
+import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 
 @Directive({
     selector: '[zoomableOf]'

@@ -3,13 +3,19 @@
     <app-graph-drawer></app-graph-drawer>
   </mat-drawer>
 
+  <div class="btn-group">
+    <label *ngFor="let button of buttons" class="btn btn-elegant btn-sm waves-light" [(ngModel)]=button.checkModel
+           mdbCheckbox mdbWavesEffect (click)="addData(button.label)">
+      {{button.label}}
+    </label>
+  </div>
+
+
   <app-graph [nodes]="nodes" [links]="links"></app-graph>
 
   <button class="btn btn-elegant waves-light search-button" (click)="drawer.toggle()">
     <i class="fa fa-search" aria-hidden="true"></i>
   </button>
-
-  <button (click)="changeNodeColor()">test</button>
 
 </mat-drawer-container>
 
