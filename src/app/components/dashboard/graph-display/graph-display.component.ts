@@ -11,16 +11,14 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 })
 export class GraphDisplayComponent implements OnInit, OnDestroy {
 
-  public buttons = [{label: 'Utilisateurs', checkModel: 'checkModel.users'},
-    {label: 'Salles', checkModel: 'checkModel.gyms'},
-    {label: 'Villes', checkModel: 'checkModel.towns'},
-    {label: 'Evenement', checkModel: 'checkModel.events'}];
+  public buttons = [{id: 'users', label: 'Utilisateurs'},
+    {id: 'gyms', label: 'Salles'},
+    {id: 'towns', label: 'Villes'},
+    {id: 'events', label: 'Evenement'];
   public checkModel: any = {users: true, gyms: false, towns: false, events: false};
-
 
   nodes: Node[] = [];
   links: Link[] = [];
-
 
   @ViewChild(GraphComponent) graph: GraphComponent;
 
@@ -54,7 +52,14 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
   }
 
   addData(data: string) {
+    if (this.checkModel[data] === true) {
+      // add data
+      console.log('add');
+    } else {
+      // remove data
+      console.log('remove');
 
+    }
     // const self = this;
     // this.bonusNodesInput.forEach(function (node) {
     //   self.nodes.push(new Node(node.id, node.group, node.label, node.level));

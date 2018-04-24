@@ -4,8 +4,8 @@
   </mat-drawer>
 
   <div class="btn-group">
-    <label *ngFor="let button of buttons" class="btn btn-elegant btn-sm waves-light" [(ngModel)]=button.checkModel
-           mdbCheckbox mdbWavesEffect (click)="addData(button.label)">
+    <label *ngFor="let button of buttons" class="btn btn-elegant btn-sm waves-light" [(ngModel)]=checkModel[button.id]
+           mdbCheckbox mdbWavesEffect (click)="addData(button.id)">
       {{button.label}}
     </label>
   </div>
