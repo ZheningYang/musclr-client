@@ -3,14 +3,10 @@
     <div class="row">
       <!--bodyparts-->
       <div class="col-md-3">
-        <div class="list-group">
-          <a class="list-group-item active">
-            Cras justo odio
+        <div class="list-group" *ngFor="let group of groupsList" (click)="clicked(group)">
+          <a class="list-group-item">
+            {{group}}
           </a>
-          <a class="list-group-item">Dapibus ac facilisis in</a>
-          <a class="list-group-item">Morbi leo risus</a>
-          <a class="list-group-item">Porta ac consectetur ac</a>
-          <a class="list-group-item">Vestibulum at eros</a>
         </div>
       </div>
       <!--/bodyparts-->

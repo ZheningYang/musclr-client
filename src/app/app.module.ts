@@ -32,6 +32,7 @@ import {GraphComponent} from './components/administration/graph-display/visuals/
 import {D3Service} from './components/administration/graph-display/d3';
 import {Neo4jService} from './components/administration/graph-display/neo4j.service';
 import {GraphDisplayComponent} from './components/administration/graph-display/graph-display.component';
+import {ExerciseService} from "./components/exercises/exercise.service";
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import {GraphDisplayComponent} from './components/administration/graph-display/g
     SchedulerService,
     D3Service,
     Neo4jService,
+    ExerciseService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
