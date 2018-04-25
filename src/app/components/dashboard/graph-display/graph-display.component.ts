@@ -62,13 +62,11 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
                 data.nodes.forEach(function (node) {
                   self.nodes.push(new Node(node.id, node.group, node.username, node.level));
                 });
-                this.graph.forceDirectedGraph.initNodes();
-
                 data.links.forEach(function (link) {
                   self.links.push(new Link(link.source, link.target, link.label, link.sourceGroup, link.targetGroup));
                 });
+                self.graph.forceDirectedGraph.updateData(self.nodes, self.links);
 
-                this.graph.forceDirectedGraph.initLinks();
               },
               error => Observable.throw(error || 'Server error')
             );
@@ -78,33 +76,25 @@ export class GraphDisplayComponent implements OnInit, OnDestroy {
             .subscribe((neo4j: { links: Link[], nodes: Node[] }) => {
 
                 neo4j.nodes.forEach(function (node) {
-                  self.nodes.push(new Node(node.id, node.group, node.username, node.level));
+                  self.nodes.push(new Node(node.id, node.group, node.workout, 'Silver'));
                 });
-                this.graph.forceDirectedGraph.initNodes();
 
                 neo4j.links.forEach(function (link) {
                   self.links.push(new Link(link.source, link.target, link.label, link.sourceGroup, link.targetGroup));
                 });
 
-                this.graph.forceDirectedGraph.initLinks();
+                // self.graph.forceDirectedGraph.initLinks();
+                self.graph.forceDirectedGraph.updateData(self.nodes, self.links);
               },
               error => Observable.throw(error || 'Server error')
             );
           break;
       }
     } else {
-      self.links = self.links.filter(link => link.sourceGroup !== data || link.targetGroup !== data);
+      // apparently you have to remove the visuals (first two line) but also the data in the force graph
+      self.links = self.links.filter(link => link.sourceGroup !== data && link.targetGroup !== data);
       self.nodes = self.nodes.filter(node => node.group !== data);
+      self.graph.forceDirectedGraph.updateData(self.nodes, self.links);
     }
-    // const self = this;
-    // this.bonusNodesInput.forEach(function (node) {
-    //   self.nodes.push(new Node(node.id, node.group, node.label, node.level));
-    // });
-    // this.graph.forceDirectedGraph.initNodes();
-    //
-    // this.bonusLinksInput.forEach(function (link) {
-    //   self.links.push(new Link(link.source, link.target, link.label));
-    // });
-    // this.graph.forceDirectedGraph.initLinks();
   }
 }

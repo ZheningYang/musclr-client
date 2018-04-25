@@ -15,26 +15,13 @@ export class ForceDirectedGraph {
 
   public nodes: Node[] = [];
   public links: Link[] = [];
+  public options;
 
   constructor(nodes, links, options: { width, height }) {
     this.nodes = nodes;
     this.links = links;
+    this.options = options;
     this.initSimulation(options);
-  }
-
-  connectNodes(source, target, label, sourceGroup, targetGroup) {
-    let link;
-
-    if (!this.nodes[source] || !this.nodes[target]) {
-      throw new Error('One of the nodes does not exist');
-    }
-
-    link = new Link(source, target, label, sourceGroup, targetGroup);
-    this.simulation.stop();
-    this.links.push(link);
-    this.simulation.alphaTarget(0.3).restart();
-
-    this.initLinks();
   }
 
   initNodes() {
@@ -91,5 +78,24 @@ export class ForceDirectedGraph {
 
     /** Restarting the simulation internal timer */
     this.simulation.restart();
+  }
+
+  // removeData(data: string) {
+  //   this.links = this.links.filter(link => link.sourceGroup !== data && link.targetGroup !== data);
+  //   this.nodes = this.nodes.filter(node => node.group !== data);
+  //   this.initLinks();
+  //   /** Updating the central force of the simulation */
+  //   this.simulation.force('centers', d3.forceCenter(this.options.width / 2, this.options.height / 2));
+  //
+  //   /** Restarting the simulation internal timer */
+  //   this.simulation.restart();
+  // }
+
+  updateData(nodes: Node[], links: Link[]) {
+    this.simulation.nodes(nodes);
+    this.links = links;
+    this.initLinks();
+    this.simulation.force('centers', d3.forceCenter(this.options.width / 2, this.options.height / 2));
+
   }
 }
