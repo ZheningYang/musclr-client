@@ -9,12 +9,16 @@ export class Link implements d3.SimulationLinkDatum<Node> {
   target: Node;
   strength: number;
   label: string;
+  sourceGroup: string;
+  targetGroup: string;
 
-  constructor(source, target, label) {
+  constructor(source, target, label, sourceGroup, targetGroup) {
     this.source = source;
     this.target = target;
     this.strength = 1;
     this.label = label;
+    this.sourceGroup = sourceGroup;
+    this.targetGroup = targetGroup;
   }
 
 
