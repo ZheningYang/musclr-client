@@ -3,8 +3,9 @@
     <div class="row">
       <!--bodyparts-->
       <div class="col-md-3">
-        <div class="list-group" *ngFor="let group of groupsList" (click)="clicked(group)">
-          <a class="list-group-item">
+        <div class="list-group">
+          <a class="list-group-item" *ngFor="let group of groupList; let i = index" (click)="clicked(group, i);"
+             [class.active]="i==selectedGroupIndex">
             {{group}}
           </a>
         </div>
@@ -16,130 +17,52 @@
         <div class="card card-cascade narrower">
           <div class="card-body">
             <!--Small news-->
-            <div class="single-news">
+            <div class="single-news" *ngFor="let exercise of exerciseList |slice:0:show let i=index">
 
               <div class="row">
-                <div class="col-md-3">
 
-                  <!--Image-->
-                  <div mdbRippleRadius class="view overlay hm-white-slight waves-light">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(93).jpg"
-                         alt="Minor sample post image">
-                    <a>
-                      <div class="mask"></div>
-                    </a>
-                  </div>
+                <div class="col-md-4">
+                  <iframe [src]="(exercise.link+'?showinfo=0') | safe" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <!--Excerpt-->
-                <div class="col-md-9">
-                  <p><strong>Développé couché</strong></p>
-                  <a class="pb-2">description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus,
-                    reiciendis.
-                    <i class="fa fa-angle-right"></i>
+                <div class="col-md-8">
+                  <p><strong>{{exercise.name}}</strong></p>
+                  <a class="pb-2">{{exercise.description}}
+                    <!--<i class="fa fa-angle-right"></i>-->
                   </a>
 
                   <dl class="row mt-3 mb-0">
-                    <dt class="col-sm-3">Main Muscle Group:</dt>
-                    <dd class="col-sm-9">Legs</dd>
+                    <dt class="col-sm-5">Main Muscle Group:</dt>
+                    <dd class="col-sm-7">{{exercise.group}}</dd>
 
-                    <dt class="col-sm-3">Type:</dt>
-                    <dd class="col-sm-9">Strength</dd>
+                    <dt class="col-sm-5">Type:</dt>
+                    <dd class="col-sm-7">
+                      <div *ngIf="exercise.cardio; else strength">Cardio</div>
+                      <ng-template #strength>Strength</ng-template>
+                    </dd>
 
-                    <dt class="col-sm-3">Equipement:</dt>
-                    <dd class="col-sm-9">Bands</dd>
 
+                    <dt class="col-sm-5">Equipement:</dt>
+                    <dd class="col-sm-7">
+                      <div *ngIf="exercise.equipment; else noEquip">Yes</div>
+                      <ng-template #noEquip>No</ng-template>
+                    </dd>
+
+                    <dt class="col-sm-5">Level:</dt>
+                    <dd class="col-sm-7">{{exercise.level}}</dd>
                   </dl>
-
                 </div>
-
               </div>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-elegant waves-light" mdbRippleRadius (click)="showMore()"
+                      [disabled]="buttonDisabled">More
+              </button>
             </div>
             <!--/Small news-->
 
-            <!--Small news-->
-            <div class="single-news">
 
-              <div class="row">
-                <div class="col-md-3">
-
-                  <!--Image-->
-                  <div mdbRippleRadius class="view overlay hm-white-slight waves-light">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(93).jpg"
-                         alt="Minor sample post image">
-                    <a>
-                      <div class="mask"></div>
-                    </a>
-                  </div>
-                </div>
-
-                <!--Excerpt-->
-                <div class="col-md-9">
-                  <p><strong>Développé couché</strong></p>
-                  <a class="pb-2">description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus,
-                    reiciendis.
-                    <i class="fa fa-angle-right"></i>
-                  </a>
-
-                  <dl class="row mt-3 mb-0">
-                    <dt class="col-sm-3">Main Muscle Group:</dt>
-                    <dd class="col-sm-9">Legs</dd>
-
-                    <dt class="col-sm-3">Type:</dt>
-                    <dd class="col-sm-9">Strength</dd>
-
-                    <dt class="col-sm-3">Equipement:</dt>
-                    <dd class="col-sm-9">Bands</dd>
-
-                  </dl>
-
-                </div>
-
-              </div>
-            </div>
-            <!--/Small news-->
-
-            <!--Small news-->
-            <div class="single-news">
-
-              <div class="row">
-                <div class="col-md-3">
-
-                  <!--Image-->
-                  <div mdbRippleRadius class="view overlay hm-white-slight waves-light">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(93).jpg"
-                         alt="Minor sample post image">
-                    <a>
-                      <div class="mask"></div>
-                    </a>
-                  </div>
-                </div>
-
-                <!--Excerpt-->
-                <div class="col-md-9">
-                  <p><strong>Développé couché</strong></p>
-                  <a class="pb-2">description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus,
-                    reiciendis.
-                    <i class="fa fa-angle-right"></i>
-                  </a>
-
-                  <dl class="row mt-3 mb-0">
-                    <dt class="col-sm-3">Main Muscle Group:</dt>
-                    <dd class="col-sm-9">Legs</dd>
-
-                    <dt class="col-sm-3">Type:</dt>
-                    <dd class="col-sm-9">Strength</dd>
-
-                    <dt class="col-sm-3">Equipement:</dt>
-                    <dd class="col-sm-9">Bands</dd>
-
-                  </dl>
-
-                </div>
-
-              </div>
-            </div>
-            <!--/Small news-->
           </div>
         </div>
       </div>

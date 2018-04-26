@@ -33,6 +33,7 @@ import {D3Service} from './components/administration/graph-display/d3';
 import {Neo4jService} from './components/administration/graph-display/neo4j.service';
 import {GraphDisplayComponent} from './components/administration/graph-display/graph-display.component';
 import {ExerciseService} from "./components/exercises/exercise.service";
+import { SafePipe } from './components/exercises/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {ExerciseService} from "./components/exercises/exercise.service";
     ExercisesComponent,
     AdministrationComponent,
     ProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    SafePipe
   ],
   imports: [
     AppRoutingModule,

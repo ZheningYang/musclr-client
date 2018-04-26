@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Exercise} from '../../models/exercise.model';
 import {ExerciseService} from './exercise.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-exercises',
@@ -9,36 +10,69 @@ import {ExerciseService} from './exercise.service';
 })
 export class ExercisesComponent implements OnInit, OnDestroy {
 
-  @Input() exercises: Exercise[];
+  @Input() exerciseList: Exercise[];
   @Output()
   onGroupSelected: EventEmitter<String> = new EventEmitter<any>();
 
-  groupsList: String[];
+  groupList: String[];
   groupSelected: String;
+  selectedGroupIndex: Number;
+  show = 3;
+  buttonDisabled: boolean;
 
-  constructor(private exerciseService: ExerciseService) {
+
+  constructor(private exerciseService: ExerciseService, public sanitizer: DomSanitizer) {
+    this.buttonDisabled = false;
   }
 
-  clicked(group: String): void {
+  showMore(): void {
+    this.show += 3;
+    if (this.show >= this.exerciseList.length) {
+      this.buttonDisabled = true;
+    }
+  }
+
+  clicked(group: String, index: Number): void {
     this.groupSelected = group;
     this.onGroupSelected.emit(group);
+    this.selectedGroupIndex = index;
+    this.getExerciseList(group);
+
+    this.show = 3;
+    this.buttonDisabled = false;
+
+  }
+
+  getExerciseList(group: String): void {
+    this.exerciseService.getExerciseListByGroup(group)
+      .subscribe(
+        data => {
+          this.exerciseList = data;
+        },
+        errorCode => console.log(errorCode),
+        () => {
+        }
+      );
   }
 
   getGroupsList(): void {
-    this.exerciseService.getExerciseGroupList().subscribe(
-      data => {
-        this.groupsList = data;
-      },
-      errorCode => console.log(errorCode),
-      () => {
-      }
-    );
+    this.exerciseService.getExerciseGroupList()
+      .subscribe(
+        data => {
+          this.groupList = data;
+        },
+        errorCode => console.log(errorCode),
+        () => {
+          this.clicked(this.groupList[0], 0);
+        }
+      );
   }
 
   ngOnInit() {
     (document.getElementsByClassName('navbar').item(0) as HTMLElement).style.backgroundColor = 'black';
 
     this.getGroupsList();
+
   }
 
   ngOnDestroy() {
