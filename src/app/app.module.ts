@@ -21,7 +21,7 @@ import {NewsComponent} from './components/news/news.component';
 import {MatSidenavModule} from '@angular/material';
 import {CommunityComponent} from './components/community/community.component';
 import {SchedulerService} from './components/scheduler-container/scheduler.service';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ExercisesComponent} from './components/exercises/exercises.component';
 import {AdministrationComponent} from './components/administration/administration.component';
@@ -57,7 +57,6 @@ import { SafePipe } from './components/exercises/safe.pipe';
     GraphDrawerComponent,
     ProfileComponent,
     ExercisesComponent,
-    AdministrationComponent,
     ProfileComponent,
     DashboardComponent,
     SafePipe
