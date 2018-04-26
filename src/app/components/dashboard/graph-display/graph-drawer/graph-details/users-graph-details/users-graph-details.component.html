@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <h2 class="h2-responsive">Les utilisateurs</h2>
+  </div>
+  <div class="row">
+    <h3 class="h3-responsive">Les noeuds</h3>
+  </div>
+  <div class="btn-group">
+      <label *ngFor="let button of nodeButtons" class="btn btn-elegant btn-sm waves-light" [(ngModel)]=checkModel[button.id]
+      mdbRadio="{{button.label}}" mdbWavesEffect  (click)="nodeColor(button.id)">
+        {{button.label}}
+      </label>
+    </div>
+  <!--End of nodes-->
+
+  <div class="row">
+    <h3 class="h3-responsive">La taille des noeuds</h3>
+  </div>
+  <div class="row ">
+    <div class="btn-group">
+      <div class="checkbox">
+        <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="activite" mdbWavesEffect>
+          Activités
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="amies" mdbWavesEffect>
+          Ami(e)s
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="evenement" mdbWavesEffect>
+          Evénement
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="notes" mdbWavesEffect>
+          Notes
+        </label>
+      </div>
+    </div>
+  </div>
+  <!--End of size of nodes-->
+  <div class="row">
+    <h3 class="h3-responsive">Les liens</h3>
+  </div>
+  <div class="row ">
+    <div class="btn-group">
+      <div class="checkbox">
+        <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="coach" mdbWavesEffect>
+          Coach
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="friends" mdbWavesEffect>
+          Ami(e)s
+        </label>
+      </div>
+    </div>
+  </div>
+  <!--End of links-->
+  <div class="row">
+      <h3 class="h3-responsive">La taille des liens</h3>
+    </div>
+    <div class="row ">
+      <div class="btn-group">
+        <div class="checkbox">
+          <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="event" mdbWavesEffect>
+            Evénement
+          </label>
+        </div>
+        <div class="checkbox">
+          <label class="btn btn-elegant btn-sm waves-light" [(ngModel)]="radioModel" mdbRadio="proximité" mdbWavesEffect>
+            Proximité
+          </label>
+        </div>
+      </div>
+    </div>
+    <!--End of links-->
+</div>

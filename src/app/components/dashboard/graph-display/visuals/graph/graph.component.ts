@@ -8,7 +8,8 @@ import {D3Service, ForceDirectedGraph} from '../../d3';
     <svg #svg [attr.width]="options.width" [attr.height]="options.height">
       <g [zoomableOf]="svg">
         <g [linkVisual]="link" *ngFor="let link of links"></g>
-        <g [nodeVisual]="node" *ngFor="let node of nodes"
+        <g [nodeVisual]="node" *ngFor="let node of nodes" (click)="drawer.toggle()"
+        routerLink="/graph/{{node.group}}"
            [draggableNode]="node" [draggableInGraph]="forceDirectedGraph"></g>
       </g>
     </svg>
@@ -18,6 +19,7 @@ import {D3Service, ForceDirectedGraph} from '../../d3';
 export class GraphComponent implements OnInit, AfterViewInit {
   @Input('nodes') nodes;
   @Input('links') links;
+  @Input('drawer') drawer;
   forceDirectedGraph: ForceDirectedGraph;
   private _options: { width, height };
 

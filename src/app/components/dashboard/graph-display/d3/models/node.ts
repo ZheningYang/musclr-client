@@ -26,17 +26,17 @@ export class Node implements d3.SimulationNodeDatum {
     this.group = group;
     this.label = label;
     this.level = level;
-    switch (level) {
-      case 'Gold':
-        this.color = '#D4AF37';
-        break;
-      case 'Silver':
-        this.color = '#C0C0C0';
-        break;
-      case 'Bronze':
-        this.color = '#CD7F32';
-        break;
-    }
+    // switch (level) {
+    //   case 'Gold':
+    //     this.color = '#D4AF37';
+    //     break;
+    //   case 'Silver':
+    //     this.color = '#C0C0C0';
+    //     break;
+    //   case 'Bronze':
+    //     this.color = '#CD7F32';
+    //     break;
+    // }
   }
 
   // normal = () => {

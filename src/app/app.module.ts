@@ -33,6 +33,10 @@ import {GraphComponent} from './components/dashboard/graph-display/visuals/graph
 import {LinkVisualComponent, NodeVisualComponent} from './components/dashboard/graph-display/visuals/shared';
 import {GraphDisplayComponent} from './components/dashboard/graph-display/graph-display.component';
 import {GraphDrawerComponent} from './components/dashboard/graph-display/graph-drawer/graph-drawer.component';
+import { UsersGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.component';
+import { EventsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/events-graph-details/events-graph-details.component';
+import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
+import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import {GraphDrawerComponent} from './components/dashboard/graph-display/graph-d
     ExercisesComponent,
     ProfileComponent,
     DashboardComponent,
-    SafePipe
+    SafePipe,
+    UsersGraphDetailsComponent,
+    EventsGraphDetailsComponent,
+    TownsGraphDetailsComponent,
+    GymsGraphDetailsComponent
   ],
   imports: [
     AppRoutingModule,
