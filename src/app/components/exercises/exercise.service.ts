@@ -13,8 +13,8 @@ export class ExerciseService {
   constructor(private http: HttpClient) {
   }
 
-  getExerciseListByGroup(group: string): Observable<Exercise[]> {
-    return this.http.get<Exercise[]>(this.springBootServerUrl + group);
+  getExerciseListByGroup(group: String): Observable<Exercise[]> {
+    return this.http.get<Exercise[]>(this.springBootServerUrl + 'groups/' + group);
   }
 
   getExerciseGroupList(): Observable<String[]> {
