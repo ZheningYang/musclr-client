@@ -24,16 +24,15 @@ import {SchedulerService} from './components/scheduler-container/scheduler.servi
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ExercisesComponent} from './components/exercises/exercises.component';
-import {AdministrationComponent} from './components/administration/administration.component';
-import {DraggableDirective, ZoomableDirective} from './components/administration/graph-display/d3/directives';
-import {LinkVisualComponent, NodeVisualComponent} from './components/administration/graph-display/visuals/shared';
-import {GraphDrawerComponent} from './components/administration/graph-display/graph-drawer/graph-drawer.component';
-import {GraphComponent} from './components/administration/graph-display/visuals/graph/graph.component';
-import {D3Service} from './components/administration/graph-display/d3';
-import {Neo4jService} from './components/administration/graph-display/neo4j.service';
-import {GraphDisplayComponent} from './components/administration/graph-display/graph-display.component';
-import {ExerciseService} from "./components/exercises/exercise.service";
-import { SafePipe } from './components/exercises/safe.pipe';
+import {SafePipe} from './components/exercises/safe.pipe';
+import {DraggableDirective, ZoomableDirective} from './components/dashboard/graph-display/d3/directives';
+import {ExerciseService} from './components/exercises/exercise.service';
+import {Neo4jService} from './components/dashboard/graph-display/neo4j.service';
+import {D3Service} from './components/dashboard/graph-display/d3';
+import {GraphComponent} from './components/dashboard/graph-display/visuals/graph/graph.component';
+import {LinkVisualComponent, NodeVisualComponent} from './components/dashboard/graph-display/visuals/shared';
+import {GraphDisplayComponent} from './components/dashboard/graph-display/graph-display.component';
+import {GraphDrawerComponent} from './components/dashboard/graph-display/graph-drawer/graph-drawer.component';
 
 @NgModule({
   declarations: [
