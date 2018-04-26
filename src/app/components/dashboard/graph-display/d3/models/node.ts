@@ -11,6 +11,9 @@ export class Node implements d3.SimulationNodeDatum {
   // user
   username?: string;
 
+  // event
+  workout?: string;
+
   id: string;
   group: string;
   label: string;
