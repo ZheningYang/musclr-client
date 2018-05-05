@@ -82,6 +82,10 @@ export class SchedulerComponent implements AfterViewInit {
       this.max_participant_number.push({key: i + 1, label: (i + 1).toString()});
     }
 
+    this.schedulerService.eventList$.subscribe(
+      events => scheduler.parse(events, 'json'),
+      error => console.log(error)
+    );
   }
 
   // PRO-TIP
@@ -115,10 +119,9 @@ export class SchedulerComponent implements AfterViewInit {
     // loads all the user's events
     this.schedulerService.getEventsForAuthenticatedUser()
       .subscribe(
-        (data: JSON) => {
-          scheduler.parse(data, 'json');
-        } ,
-        error => console.log(error));
+        (data: JSON) => scheduler.parse(data, 'json'),
+        error => console.log(error)
+      );
 
 
     // save an event

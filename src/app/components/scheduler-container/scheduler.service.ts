@@ -4,14 +4,23 @@ import {Observable} from 'rxjs/Observable';
 
 import {Event} from '../../models/event.model';
 import {environment} from '../../../environments/environment';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class SchedulerService {
 
   private eventsUrl = environment.serverUrl + 'events/';
   private usersUrl = environment.serverUrl + 'users/';
+  private eventListSubject = new Subject();
+  eventList$ = this.eventListSubject.asObservable();
 
   constructor(private http: HttpClient) {
+  }
+
+  loadEvents(username) {
+    this.getFriendsEvents(username).subscribe(
+      data => this.eventListSubject.next(data)
+    );
   }
 
   getEventsForAuthenticatedUser() {
@@ -40,5 +49,10 @@ export class SchedulerService {
 
   getFriendsForAuthenticatedUserByUsername(username: String) {
     return this.http.get(this.usersUrl + 'friends/' + username);
+  }
+
+  getFriendsEvents(username: String) {
+    return this.http.get(this.eventsUrl + 'friends/' + username);
+
   }
 }

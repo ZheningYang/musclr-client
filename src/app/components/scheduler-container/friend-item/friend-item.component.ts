@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../../models/user.model';
+import {SchedulerService} from '../scheduler.service';
 
 @Component({
   selector: 'app-friend-item',
@@ -11,10 +12,14 @@ export class FriendItemComponent implements OnInit {
   @Input()
   user: User;
 
-  constructor() {
+  constructor(private schedulerService: SchedulerService) {
   }
 
   ngOnInit() {
+  }
+
+  loadEvents() {
+    this.schedulerService.loadEvents(this.user.profile[0].username);
   }
 
 }
