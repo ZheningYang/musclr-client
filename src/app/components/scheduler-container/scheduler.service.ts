@@ -9,12 +9,12 @@ import {environment} from '../../../environments/environment';
 export class SchedulerService {
 
   private eventsUrl = environment.serverUrl + 'events/';
-
+  private usersUrl = environment.serverUrl + 'users/';
 
   constructor(private http: HttpClient) {
   }
 
-  getForAuthenticatedUser() {
+  getEventsForAuthenticatedUser() {
     return this.http.get(this.eventsUrl);
   }
 
@@ -34,4 +34,11 @@ export class SchedulerService {
     return this.http.delete(this.eventsUrl + id);
   }
 
+  getFriendsForAuthenticatedUser() {
+    return this.http.get(this.usersUrl + 'friends');
+  }
+
+  getFriendsForAuthenticatedUserByUsername(username: String) {
+    return this.http.get(this.usersUrl + 'friends/' + username);
+  }
 }

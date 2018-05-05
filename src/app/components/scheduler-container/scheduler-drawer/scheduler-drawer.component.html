@@ -1,10 +1,14 @@
 <div class="container mt-4">
   <div class="md-form">
-    <input mdbActive type="text" id="form1" class="form-control">
+    <input mdbActive type="text" id="form1" class="form-control" (input)="searchFriends($event.target.value)">
     <label for="form1" class="">Entrez un login.</label>
   </div>
-  <button  class="btn btn-elegant waves-light" >
+  <button class="btn btn-elegant waves-light">
     Rechercher
   </button>
+
+  <section class="pt-5 pb-3" *ngFor="let friend of friends">
+    <app-friend-item [user]="friend"></app-friend-item>
+  </section>
 </div>
 

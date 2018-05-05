@@ -113,7 +113,7 @@ export class SchedulerComponent implements AfterViewInit {
     scheduler.init(this.schedulerContainer.nativeElement, new Date());
 
     // loads all the user's events
-    this.schedulerService.getForAuthenticatedUser()
+    this.schedulerService.getEventsForAuthenticatedUser()
       .subscribe(
         (data: JSON) => {
           scheduler.parse(data, 'json');

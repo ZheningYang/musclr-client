@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {User} from '../../../models/user.model';
+import {SchedulerService} from '../scheduler.service';
 
 @Component({
   selector: 'app-scheduler-drawer',
@@ -7,10 +9,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SchedulerDrawerComponent implements OnInit {
 
-  constructor() {
+  friends: User[];
+
+  constructor(private schedulerService: SchedulerService) {
   }
 
   ngOnInit() {
   }
 
+  searchFriends(input: String) {
+    this.schedulerService.getFriendsForAuthenticatedUserByUsername(input)
+      .subscribe((data: User[]) => this.friends = data);
+  }
 }
