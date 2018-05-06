@@ -5,4 +5,5 @@ export class Event {
   text: string;
   user_id: string;
   max_participant_number: number;
+  workout: String;
 }

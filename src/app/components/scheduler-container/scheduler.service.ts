@@ -53,6 +53,10 @@ export class SchedulerService {
 
   getFriendsEvents(username: String) {
     return this.http.get(this.eventsUrl + 'friends/' + username);
+  }
+
+  getWorkoutsForAuthenticatedUser() {
+    return this.http.get(this.usersUrl + 'workouts');
 
   }
 }

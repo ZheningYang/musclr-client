@@ -19,7 +19,7 @@ export class FriendItemComponent implements OnInit {
   }
 
   loadEvents() {
-    this.schedulerService.loadEvents(this.user.profile[0].username);
+    this.schedulerService.loadEvents(this.user.username);
   }
 
 }

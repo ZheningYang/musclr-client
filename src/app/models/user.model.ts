@@ -4,7 +4,5 @@ export class User {
   password: string;
   image_path: string;
   friends: string[];
-  profile: {
-    username: string
-  };
+  username: string;
 }

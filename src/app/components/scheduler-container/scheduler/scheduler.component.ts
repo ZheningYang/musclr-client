@@ -6,6 +6,8 @@ import {} from '@types/dhtmlxscheduler';
 import {AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {SchedulerService} from '../scheduler.service';
 import {Event} from '../../../models/event.model';
+import {Workout} from '../../../models/workout.model';
+import 'rxjs/add/operator/map';
 
 // import {} from '@types/dhtmlxscheduler'; is mandatory
 
@@ -82,6 +84,12 @@ export class SchedulerComponent implements AfterViewInit {
       this.max_participant_number.push({key: i + 1, label: (i + 1).toString()});
     }
 
+    this.schedulerService.getWorkoutsForAuthenticatedUser().subscribe(
+      (workouts: Workout[]) => {
+        workouts.forEach(workout => this.my_workouts.push({key: workout._id, label: workout.name}));
+      }
+    );
+
     this.schedulerService.eventList$.subscribe(
       events => scheduler.parse(events, 'json'),
       error => console.log(error)
@@ -115,6 +123,8 @@ export class SchedulerComponent implements AfterViewInit {
 
 
     scheduler.init(this.schedulerContainer.nativeElement, new Date());
+
+    scheduler.clearAll();
 
     // loads all the user's events
     this.schedulerService.getEventsForAuthenticatedUser()
