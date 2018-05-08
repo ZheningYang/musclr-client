@@ -18,7 +18,7 @@ import {SchedulerDrawerComponent} from './components/scheduler-container/schedul
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {FooterComponent} from './components/navigation/footer/footer.component';
 import {NewsComponent} from './components/news/news.component';
-import {MatInputModule, MatRadioModule, MatSidenavModule} from '@angular/material';
+import {MatInputModule, MatRadioModule, MatSidenavModule, MatButtonModule, MatIconModule} from '@angular/material';
 import {CommunityComponent} from './components/community/community.component';
 import {SchedulerService} from './components/scheduler-container/scheduler.service';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
@@ -72,6 +72,8 @@ import { FriendItemComponent } from './components/scheduler-container/friend-ite
     MatSidenavModule,
     MatInputModule,
     MatRadioModule,
+    MatButtonModule,
+    MatIconModule,
     MDBBootstrapModule.forRoot()
   ],
   schemas: [
