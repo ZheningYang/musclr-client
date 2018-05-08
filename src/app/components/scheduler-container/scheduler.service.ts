@@ -19,7 +19,9 @@ export class SchedulerService {
 
   loadEvents(username) {
     this.getFriendsEvents(username).subscribe(
-      data => this.eventListSubject.next(data)
+      data => {
+        this.eventListSubject.next(data);
+      }
     );
   }
 

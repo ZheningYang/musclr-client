@@ -3,7 +3,7 @@ import 'dhtmlx-scheduler/codebase/locale/locale_fr.js';
 import 'dhtmlx-scheduler/codebase/ext/dhtmlxscheduler_editors.js';
 import {} from '@types/dhtmlxscheduler';
 
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {SchedulerService} from '../scheduler.service';
 import {Event} from '../../../models/event.model';
 import {Workout} from '../../../models/workout.model';
@@ -18,7 +18,7 @@ import {AuthService} from '../../auth/auth.service';
   templateUrl: './scheduler.component.html',
   styleUrls: ['./scheduler.component.css']
 })
-export class SchedulerComponent implements AfterViewInit, OnDestroy {
+export class SchedulerComponent implements AfterViewInit {
 
   @ViewChild('scheduler_here')
   schedulerContainer: ElementRef;
@@ -38,7 +38,7 @@ export class SchedulerComponent implements AfterViewInit, OnDestroy {
   fieldConfig = {
     myEvent: [
       {name: 'Titre', height: 30, type: 'textarea', map_to: 'text', focus: true},
-      {name: 'Séance', height: 50, type: 'select', map_to: 'workout._id', options: this.my_workouts},
+      {name: 'Séance', height: 50, type: 'select', map_to: 'workout', options: this.my_workouts},
       {name: 'Maximum de participants', height: 50, type: 'select', map_to: 'max_participant_number', options: this.max_participant_number},
       {name: 'time', height: 72, type: 'time', map_to: 'auto'}
     ],
@@ -48,7 +48,7 @@ export class SchedulerComponent implements AfterViewInit, OnDestroy {
     ],
     default: [
       {name: 'Titre', height: 50, type: 'textarea', map_to: 'text', focus: true},
-      {name: 'Séance', height: 50, type: 'textarea', map_to: 'workout.name'},
+      {name: 'Séance', height: 50, type: 'textarea', map_to: 'workout_name'},
       {name: 'Je participe', height: 40, type: 'checkbox', map_to: 'participate'},
       {name: 'Maximum de participants', height: 40, type: 'select', map_to: 'max_participant_number', options: this.max_participant_number},
     ]
@@ -67,13 +67,6 @@ export class SchedulerComponent implements AfterViewInit, OnDestroy {
         continue;
       }
       if (insert && i === 'id') {
-        continue;
-      }
-      if (i === 'workout') {
-        continue;
-      }
-      if (i === 'workout._id') {
-        result['workout'] = data[i];
         continue;
       }
       if (data[i] instanceof Date) {
@@ -126,6 +119,17 @@ export class SchedulerComponent implements AfterViewInit, OnDestroy {
     scheduler.locale.labels['custom_btn_invite'] = 'Inviter';
     scheduler.locale.labels['custom_btn_retour'] = 'Retour';
 
+
+    scheduler.attachEvent('onTemplatesReady', function () {
+      scheduler.templates.event_text = function (start, end, event) {
+        const participant_number = event.participant_list ? event.participant_list.length + 1 : 1;
+        const max = event.max_participant_number ? event.max_participant_number : 1;
+        return '<b>' + event.text + '</b><i style=\"float: right\">' + participant_number
+          + '/' + max + '</i>';
+      };
+    });
+
+
     scheduler.init(this.schedulerContainer.nativeElement, new Date());
 
     scheduler.clearAll();
@@ -149,7 +153,10 @@ export class SchedulerComponent implements AfterViewInit, OnDestroy {
     // update an event
     scheduler.attachEvent('onEventChanged', (id, event) => {
       this.schedulerService.updateEvent(id, SchedulerComponent.serializeEvent(event, false))
-        .subscribe();
+        .subscribe((data: Event) => {
+          scheduler.getEvent(id).participant_list = data.participant_list;
+        });
+      scheduler.updateEvent(id); // renders the updated event
     });
 
 
@@ -163,7 +170,7 @@ export class SchedulerComponent implements AfterViewInit, OnDestroy {
     scheduler.attachEvent('onBeforeLightbox', (id) => {
       const ev = scheduler.getEvent(id);
       scheduler.resetLightbox();
-      if (ev.creator === this.authService.getId()) {
+      if (!ev.creator || ev.creator === this.authService.getId()) {
         scheduler.config.lightbox.sections = this.fieldConfig['myEvent'];
       } else {
         scheduler.config.lightbox.sections = this.fieldConfig['default'];
@@ -187,9 +194,5 @@ export class SchedulerComponent implements AfterViewInit, OnDestroy {
       scheduler.showLightbox(id);
       return true;
     });
-  }
-
-  ngOnDestroy() {
-    scheduler.config.lightbox.sections = this.fieldConfig['default'];
   }
 }
