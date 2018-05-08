@@ -1,9 +1,16 @@
-import {AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import 'dhtmlx-scheduler';
-import {} from '@types/dhtmlxscheduler';
 import 'dhtmlx-scheduler/codebase/locale/locale_fr.js';
+import 'dhtmlx-scheduler/codebase/ext/dhtmlxscheduler_editors.js';
+import {} from '@types/dhtmlxscheduler';
+
+import {AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {SchedulerService} from '../scheduler.service';
 import {Event} from '../../../models/event.model';
+import {Workout} from '../../../models/workout.model';
+import 'rxjs/add/operator/map';
+import {AuthService} from '../../auth/auth.service';
+
+// import {} from '@types/dhtmlxscheduler'; is mandatory
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -15,6 +22,42 @@ export class SchedulerComponent implements AfterViewInit {
 
   @ViewChild('scheduler_here')
   schedulerContainer: ElementRef;
+
+  my_workouts = [];
+
+  max_participant_number = [];
+
+  alert_opts = [
+    {key: 1, label: 'None'},
+    {key: 2, label: 'On start date'},
+    {key: 3, label: '1 day before'}
+  ];
+
+  friend_list = [];
+
+  fieldConfig = {
+    myEvent: [
+      {name: 'Titre', height: 30, type: 'textarea', map_to: 'text', focus: true},
+      {name: 'Séance', height: 50, type: 'select', map_to: 'workout', options: this.my_workouts},
+      {name: 'Maximum de participants', height: 50, type: 'select', map_to: 'max_participant_number', options: this.max_participant_number},
+      {name: 'time', height: 72, type: 'time', map_to: 'auto'}
+    ],
+    addFriends: [
+      {name: 'Amis', height: 50, type: 'combo', map_to: 'friend_list', options: this.friend_list},
+      {name: 'Participants', height: 1000, type: 'participant_template', map_to: 'participant_list'}
+    ],
+    default: [
+      {name: 'Titre', height: 50, type: 'textarea', map_to: 'text', focus: true},
+      {name: 'Séance', height: 50, type: 'textarea', map_to: 'workout_name'},
+      {name: 'Je participe', height: 40, type: 'checkbox', map_to: 'participate'},
+      {name: 'Maximum de participants', height: 40, type: 'select', map_to: 'max_participant_number', options: this.max_participant_number},
+    ]
+  };
+
+  buttonConfig = {
+    default: ['dhx_delete_btn', 'custom_btn_invite'],
+    addFriends: ['dhx_delete_btn', 'custom_btn_retour']
+  };
 
   // method to transform event from the scheduler to the DB
   private static serializeEvent(data: any, insert: boolean = false): Event {
@@ -36,7 +79,22 @@ export class SchedulerComponent implements AfterViewInit {
   }
 
 
-  constructor(private schedulerService: SchedulerService) {
+  constructor(private schedulerService: SchedulerService, private authService: AuthService) {
+
+    for (let i = 0; i < 10; i++) {
+      this.max_participant_number.push({key: i + 1, label: (i + 1).toString()});
+    }
+
+    this.schedulerService.getWorkoutsForAuthenticatedUser().subscribe(
+      (workouts: Workout[]) => {
+        workouts.forEach(workout => this.my_workouts.push({key: workout._id, label: workout.name}));
+      }
+    );
+
+    this.schedulerService.eventList$.subscribe(
+      events => scheduler.parse(events, 'json'),
+      error => console.log(error)
+    );
   }
 
   // PRO-TIP
@@ -49,7 +107,7 @@ export class SchedulerComponent implements AfterViewInit {
 
     // we directly show the ligthbox on dblclick
     scheduler.config.details_on_create = true;
-    scheduler.config.details_on_dblclick = true;
+    scheduler.config.details_on_dblclick = false;
 
     // bigger hour cells + beginning/ending of hours
     scheduler.config.hour_size_px = 88;
@@ -58,13 +116,30 @@ export class SchedulerComponent implements AfterViewInit {
 
     scheduler.config.xml_date = '%Y-%m-%d %H:%i';
 
+    scheduler.locale.labels['custom_btn_invite'] = 'Inviter';
+    scheduler.locale.labels['custom_btn_retour'] = 'Retour';
+
+
+    scheduler.attachEvent('onTemplatesReady', function () {
+      scheduler.templates.event_text = function (start, end, event) {
+        const participant_number = event.participant_list ? event.participant_list.length + 1 : 1;
+        const max = event.max_participant_number ? event.max_participant_number : 1;
+        return '<b>' + event.text + '</b><i style=\"float: right\">' + participant_number
+          + '/' + max + '</i>';
+      };
+    });
+
+
     scheduler.init(this.schedulerContainer.nativeElement, new Date());
 
+    scheduler.clearAll();
+
     // loads all the user's events
-    this.schedulerService.getForAuthenticatedUser()
+    this.schedulerService.getEventsForAuthenticatedUser()
       .subscribe(
         (data: JSON) => scheduler.parse(data, 'json'),
-        error => console.log(error));
+        error => console.log(error)
+      );
 
 
     // save an event
@@ -78,7 +153,10 @@ export class SchedulerComponent implements AfterViewInit {
     // update an event
     scheduler.attachEvent('onEventChanged', (id, event) => {
       this.schedulerService.updateEvent(id, SchedulerComponent.serializeEvent(event, false))
-        .subscribe();
+        .subscribe((data: Event) => {
+          scheduler.getEvent(id).participant_list = data.participant_list;
+        });
+      scheduler.updateEvent(id); // renders the updated event
     });
 
 
@@ -87,6 +165,34 @@ export class SchedulerComponent implements AfterViewInit {
       this.schedulerService.deleteEvent(id)
         .subscribe();
     });
-  }
 
+    // select correct fields depending on if the user is the creator of the event or not
+    scheduler.attachEvent('onBeforeLightbox', (id) => {
+      const ev = scheduler.getEvent(id);
+      scheduler.resetLightbox();
+      if (!ev.creator || ev.creator === this.authService.getId()) {
+        scheduler.config.lightbox.sections = this.fieldConfig['myEvent'];
+      } else {
+        scheduler.config.lightbox.sections = this.fieldConfig['default'];
+
+        // disable title
+        const sectionTitre = scheduler.formSection('Titre');
+        sectionTitre.control.disabled = true;
+
+        // disable max
+        const sectionMax = scheduler.formSection('Maximum de participants');
+        sectionMax.control.disabled = true;
+
+        // disable workout
+        const sectionWorkout = scheduler.formSection('Séance');
+        sectionWorkout.control.disabled = true;
+      }
+      return true;
+    });
+
+    scheduler.attachEvent('onClick', function (id, e) {
+      scheduler.showLightbox(id);
+      return true;
+    });
+  }
 }
