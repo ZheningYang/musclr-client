@@ -11,10 +11,19 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {ExercisesComponent} from './components/exercises/exercises.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {GraphDisplayComponent} from './components/dashboard/graph-display/graph-display.component';
+import { UsersGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.component';
+import { EventsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/events-graph-details/events-graph-details.component';
+import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
+import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'graph', component: GraphDisplayComponent},
+  {path: 'graph', component: GraphDisplayComponent, children: [
+    {path:'users', component: UsersGraphDetailsComponent},
+    {path:'events', component: EventsGraphDetailsComponent},
+    {path:'towns', component: TownsGraphDetailsComponent},
+    {path:'gyms', component: GymsGraphDetailsComponent}
+  ]},
   {path: 'community', component: CommunityComponent},
   {path: 'exercises', component: ExercisesComponent},
   {path: 'login', component: LoginComponent},

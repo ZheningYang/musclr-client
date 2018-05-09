@@ -34,6 +34,11 @@ import {LinkVisualComponent, NodeVisualComponent} from './components/dashboard/g
 import {GraphDisplayComponent} from './components/dashboard/graph-display/graph-display.component';
 import {GraphDrawerComponent} from './components/dashboard/graph-display/graph-drawer/graph-drawer.component';
 import { FriendItemComponent } from './components/scheduler-container/friend-item/friend-item.component';
+import { UsersGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.component';
+import { EventsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/events-graph-details/events-graph-details.component';
+import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
+import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
+import { UsersGraphDetailsService } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.service';
 
 @NgModule({
   declarations: [
@@ -59,8 +64,11 @@ import { FriendItemComponent } from './components/scheduler-container/friend-ite
     ExercisesComponent,
     ProfileComponent,
     DashboardComponent,
-    SafePipe,
-    FriendItemComponent
+    FriendItemComponent,
+    UsersGraphDetailsComponent,
+    EventsGraphDetailsComponent,
+    TownsGraphDetailsComponent,
+    GymsGraphDetailsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -84,6 +92,7 @@ import { FriendItemComponent } from './components/scheduler-container/friend-ite
     Neo4jService,
     ExerciseService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    UsersGraphDetailsService
   ],
   bootstrap: [AppComponent]
 })
