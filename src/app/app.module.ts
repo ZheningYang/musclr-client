@@ -37,6 +37,7 @@ import { UsersGraphDetailsComponent } from './components/dashboard/graph-display
 import { EventsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/events-graph-details/events-graph-details.component';
 import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
 import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
+import { UsersGraphDetailsService } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.service';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/
     Neo4jService,
     ExerciseService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    UsersGraphDetailsService
   ],
   bootstrap: [AppComponent]
 })

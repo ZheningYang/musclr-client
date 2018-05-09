@@ -1,5 +1,6 @@
 import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, Input, OnInit} from '@angular/core';
 import {D3Service, ForceDirectedGraph} from '../../d3';
+import { UsersGraphDetailsService } from '../../graph-drawer/graph-details/users-graph-details/users-graph-details.service';
 
 @Component({
   selector: 'app-graph',
@@ -20,6 +21,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
   @Input('nodes') nodes;
   @Input('links') links;
   @Input('drawer') drawer;
+
   forceDirectedGraph: ForceDirectedGraph;
   private _options: { width, height };
 
@@ -44,6 +46,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
     this.forceDirectedGraph.ticker.subscribe((d) => {
       this.ref.markForCheck();
     });
+ 
   }
 
   ngAfterViewInit() {
