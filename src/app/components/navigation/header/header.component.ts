@@ -28,4 +28,8 @@ export class HeaderComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
+  updateFriendRequest() {
+    this.authService.friendRequestNumber.next(0);
+  }
+
 }

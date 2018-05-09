@@ -34,6 +34,7 @@ import {LinkVisualComponent, NodeVisualComponent} from './components/dashboard/g
 import {GraphDisplayComponent} from './components/dashboard/graph-display/graph-display.component';
 import {GraphDrawerComponent} from './components/dashboard/graph-display/graph-drawer/graph-drawer.component';
 import { FriendItemComponent } from './components/scheduler-container/friend-item/friend-item.component';
+import { MemberItemComponent } from './components/community/member-item/member-item.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { FriendItemComponent } from './components/scheduler-container/friend-ite
     ProfileComponent,
     DashboardComponent,
     SafePipe,
-    FriendItemComponent
+    FriendItemComponent,
+    MemberItemComponent
   ],
   imports: [
     AppRoutingModule,

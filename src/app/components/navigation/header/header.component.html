@@ -65,10 +65,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button mat-fab (click)="basicModal.hide()" color="" class="cross-button mx-5">
+        <button mat-fab (click)="basicModal.hide(); updateFriendRequest()" color="" class="cross-button mx-5">
           <mat-icon style="color: red">close</mat-icon>
         </button>
-        <button mat-fab (click)="basicModal.hide()" color="" class="heart-button mx-5">
+        <button mat-fab (click)="basicModal.hide(); updateFriendRequest()" color="" class="heart-button mx-5">
           <mat-icon style="color: #67dd9d">favorite</mat-icon>
         </button>
       </div>

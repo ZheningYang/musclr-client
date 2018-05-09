@@ -15,7 +15,7 @@ export class AuthService {
 
   private usersUrl = environment.serverUrl + 'users/';
   private friendsUrl = environment.serverUrl + 'friend-requests/';
-  private friendRequestNumber = new Subject<number>();
+   friendRequestNumber = new Subject<number>();
   friendRequestNumber$ = this.friendRequestNumber.asObservable();
 
   private httpOptions: RequestOptions = {
