@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 
 @Component({
@@ -8,7 +8,13 @@ import {AuthService} from '../../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService: AuthService) {
+  friendRequestNumber: number;
+
+  constructor(private authService: AuthService) {
+
+    this.authService.friendRequestNumber$.subscribe(
+      (data: number) => this.friendRequestNumber = data
+    );
   }
 
   ngOnInit() {
