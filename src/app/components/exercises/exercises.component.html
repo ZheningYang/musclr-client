@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <!--bodyparts-->
-      <div class="col-md-3">
+      <div class="col-md-2 freeze">
         <div class="list-group">
           <a class="list-group-item" *ngFor="let group of groupList; let i = index" (click)="clicked(group, i);"
              [class.active]="i==selectedGroupIndex">
@@ -13,7 +13,7 @@
       <!--/bodyparts-->
 
       <!--exercises-->
-      <div class="col-md-9">
+      <div class="col-md-9 afterFreeze">
         <div class="card card-cascade narrower">
           <div class="card-body">
             <!--Small news-->

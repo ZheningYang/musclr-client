@@ -39,6 +39,14 @@
     max-width: 100%;
     height: auto;
   }
+
+  .freeze{
+    position: fixed;
+  }
+
+  .afterFreeze{
+    margin-left: 30vh;
+  }
 }
 
 
