@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import { NguCarouselModule } from '@ngu/carousel';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/navigation/header/header.component';
@@ -39,6 +40,7 @@ import { EventsGraphDetailsComponent } from './components/dashboard/graph-displa
 import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
 import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
 import { UsersGraphDetailsService } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.service';
+import { SeanceCarouselComponent } from './components/seance-carousel/seance-carousel.component';
 
 @NgModule({
   declarations: [
@@ -68,9 +70,11 @@ import { UsersGraphDetailsService } from './components/dashboard/graph-display/g
     UsersGraphDetailsComponent,
     EventsGraphDetailsComponent,
     TownsGraphDetailsComponent,
-    GymsGraphDetailsComponent
+    GymsGraphDetailsComponent,
+    SeanceCarouselComponent
   ],
   imports: [
+    NguCarouselModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
