@@ -20,4 +20,12 @@ export class ExerciseService {
   getExerciseGroupList(): Observable<String[]> {
     return this.http.get<String[]>(this.springBootServerUrl + 'groups');
   }
+
+  getExerciseLevelList(): Observable<String[]> {
+    return this.http.get<String[]>(this.springBootServerUrl + 'levels');
+  }
+
+  getExerciseTypeList(): Observable<String[]> {
+    return this.http.get<String[]>(this.springBootServerUrl + 'types');
+  }
 }

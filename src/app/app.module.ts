@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import { NguCarouselModule } from '@ngu/carousel';
+import {NguCarouselModule} from '@ngu/carousel';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/navigation/header/header.component';
@@ -19,7 +19,14 @@ import {SchedulerDrawerComponent} from './components/scheduler-container/schedul
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {FooterComponent} from './components/navigation/footer/footer.component';
 import {NewsComponent} from './components/news/news.component';
-import {MatInputModule, MatRadioModule, MatSidenavModule} from '@angular/material';
+import {
+  MatRadioModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatSlideToggleModule
+} from '@angular/material';
 import {CommunityComponent} from './components/community/community.component';
 import {SchedulerService} from './components/scheduler-container/scheduler.service';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
@@ -34,18 +41,20 @@ import {GraphComponent} from './components/dashboard/graph-display/visuals/graph
 import {LinkVisualComponent, NodeVisualComponent} from './components/dashboard/graph-display/visuals/shared';
 import {GraphDisplayComponent} from './components/dashboard/graph-display/graph-display.component';
 import {GraphDrawerComponent} from './components/dashboard/graph-display/graph-drawer/graph-drawer.component';
-import { FriendItemComponent } from './components/scheduler-container/friend-item/friend-item.component';
-import { UsersGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.component';
-import { EventsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/events-graph-details/events-graph-details.component';
-import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
-import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
-import { UsersGraphDetailsService } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.service';
-import { WorkoutCarouselComponent } from './components/workout-carousel/workout-carousel.component';
-import { WorkoutComponent } from './components/workout/workout.component';
-import { UserCarouselComponent } from './components/user-carousel/user-carousel.component';
-import { MyWorkoutComponent } from './components/my-workout/my-workout.component';
-import { WorkoutGeneratorComponent } from './components/my-workout/workout-generator/workout-generator.component';
-import { WorkoutWalkthroughComponent } from './components/my-workout/workout-walkthrough/workout-walkthrough.component';
+import {FriendItemComponent} from './components/scheduler-container/friend-item/friend-item.component';
+/* tslint:disable:max-line-length */
+import {UsersGraphDetailsComponent} from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.component';
+import {EventsGraphDetailsComponent} from './components/dashboard/graph-display/graph-drawer/graph-details/events-graph-details/events-graph-details.component';
+import {TownsGraphDetailsComponent} from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
+import {GymsGraphDetailsComponent} from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
+import {UsersGraphDetailsService} from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.service';
+/* tslint:enable:max-line-length */
+import {WorkoutCarouselComponent} from './components/workout-carousel/workout-carousel.component';
+import {WorkoutComponent} from './components/workout/workout.component';
+import {UserCarouselComponent} from './components/user-carousel/user-carousel.component';
+import {MyWorkoutComponent} from './components/my-workout/my-workout.component';
+import {WorkoutGeneratorComponent} from './components/my-workout/workout-generator/workout-generator.component';
+import {WorkoutWalkthroughComponent} from './components/my-workout/workout-walkthrough/workout-walkthrough.component';
 
 @NgModule({
   declarations: [
@@ -93,8 +102,11 @@ import { WorkoutWalkthroughComponent } from './components/my-workout/workout-wal
     FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
-    MatInputModule,
     MatRadioModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSlideToggleModule,
     MDBBootstrapModule.forRoot()
   ],
   schemas: [
