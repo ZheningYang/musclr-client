@@ -43,6 +43,9 @@ import { UsersGraphDetailsService } from './components/dashboard/graph-display/g
 import { WorkoutCarouselComponent } from './components/workout-carousel/workout-carousel.component';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { UserCarouselComponent } from './components/user-carousel/user-carousel.component';
+import { MyWorkoutComponent } from './components/my-workout/my-workout.component';
+import { WorkoutGeneratorComponent } from './components/my-workout/workout-generator/workout-generator.component';
+import { WorkoutWalkthroughComponent } from './components/my-workout/workout-walkthrough/workout-walkthrough.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +77,9 @@ import { UserCarouselComponent } from './components/user-carousel/user-carousel.
     EventsGraphDetailsComponent,
     TownsGraphDetailsComponent,
     GymsGraphDetailsComponent,
+    MyWorkoutComponent,
+    WorkoutGeneratorComponent,
+    WorkoutWalkthroughComponent
     WorkoutCarouselComponent,
     WorkoutComponent,
     UserCarouselComponent
