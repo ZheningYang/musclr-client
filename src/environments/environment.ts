@@ -7,5 +7,5 @@ export const environment = {
   production: false,
   serverUrl: 'http://localhost:3000/',
   neo4jUrl: 'http://localhost:8080/',
-  springBootServerUrl: 'http://192.168.102.184:8080/'
+  springBootServerUrl: 'http://192.168.102.112:8080/'
 };
