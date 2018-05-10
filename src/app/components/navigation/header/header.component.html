@@ -4,25 +4,10 @@
   </logo>
   <links>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active waves-light" mdbRippleRadius>
-        <a class="nav-link" routerLink="/">Accueil</a>
+      <li *ngFor="let section of mySections; let i=index" class="nav-item waves-light waves-effect" (click)="select(i)" [ngClass]="{'active': selectedIndex == i }" mdbRippleRadius>
+        <a class="nav-link" routerLink={{section.routerLink}}>{{section.name}}</a>
       </li>
-      <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link" routerLink="/news">News</a>
-      </li>
-      <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link" routerLink="/community">Communauté</a>
-      </li>
-      <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link" routerLink="/exercises">Exercices</a>
-      </li>
-      <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link" routerLink="/seance">Séances</a>
-      </li>
-      <li class="nav-item waves-light" mdbRippleRadius>
-        <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-      </li>
-      <li class="nav-item dropdown btn-group" dropdown  *ngIf="isAuthenticated">
+      <li class="nav-item dropdown btn-group" (click)="thisFocus()" [ngClass]="{'active': selectedIndex == -1 }" dropdown  *ngIf="isAuthenticated">
         <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>
           Mon Profil<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary dropdown-menu-right" role="menu">
@@ -33,7 +18,7 @@
           <a class="dropdown-item waves-light" mdbRippleRadius (click)="logout()">Se déconnecter</a>
         </div>
       </li>
-      <li class="nav-item waves-light" mdbRippleRadius *ngIf="!isAuthenticated">
+      <li class="nav-item waves-light" (click)="thisFocus()" [ngClass]="{'active': selectedIndex == -1 }" mdbRippleRadius *ngIf="!isAuthenticated">
         <a class="nav-link" routerLink="/login">Se connecter</a>
       </li>
     </ul>

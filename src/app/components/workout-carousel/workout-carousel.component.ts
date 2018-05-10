@@ -3,10 +3,10 @@ import { NguCarousel } from '@ngu/carousel';
 
 @Component({
   selector: 'app-seance-carousel',
-  templateUrl: './seance-carousel.component.html',
-  styleUrls: ['./seance-carousel.component.scss']
+  templateUrl: './workout-carousel.component.html',
+  styleUrls: ['./workout-carousel.component.scss']
 })
-export class SeanceCarouselComponent implements OnInit {
+export class WorkoutCarouselComponent implements OnInit {
   public carouselOne: NguCarousel;
 
   ngOnInit() {

@@ -15,14 +15,17 @@ import { UsersGraphDetailsComponent } from './components/dashboard/graph-display
 import { EventsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/events-graph-details/events-graph-details.component';
 import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
 import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
+import {WorkoutComponent} from './components/workout/workout.component';
+import {WorkoutCarouselComponent} from './components/workout-carousel/workout-carousel.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'graph', component: GraphDisplayComponent, children: [
-    {path:'users', component: UsersGraphDetailsComponent},
-    {path:'events', component: EventsGraphDetailsComponent},
-    {path:'towns', component: TownsGraphDetailsComponent},
-    {path:'gyms', component: GymsGraphDetailsComponent}
+    {path: 'users', component: UsersGraphDetailsComponent},
+    {path: 'events', component: EventsGraphDetailsComponent},
+    {path: 'towns', component: TownsGraphDetailsComponent},
+    {path: 'gyms', component: GymsGraphDetailsComponent}
   ]},
   {path: 'community', component: CommunityComponent},
   {path: 'exercises', component: ExercisesComponent},
@@ -32,6 +35,8 @@ const routes: Routes = [
   {path: 'scheduler', component: SchedulerContainerComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'workout', component: WorkoutComponent},
+  {path: 'workout-carousel', component: WorkoutCarouselComponent},
   {path: '**', redirectTo: ''},
 ];
 

@@ -40,8 +40,8 @@ import { EventsGraphDetailsComponent } from './components/dashboard/graph-displa
 import { TownsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/towns-graph-details/towns-graph-details.component';
 import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/graph-drawer/graph-details/gyms-graph-details/gyms-graph-details.component';
 import { UsersGraphDetailsService } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.service';
-import { SeanceCarouselComponent } from './components/seance-carousel/seance-carousel.component';
-import { SeanceComponent } from './components/seance/seance.component';
+import { WorkoutCarouselComponent } from './components/workout-carousel/workout-carousel.component';
+import { WorkoutComponent } from './components/workout/workout.component';
 
 @NgModule({
   declarations: [
@@ -73,8 +73,8 @@ import { SeanceComponent } from './components/seance/seance.component';
     EventsGraphDetailsComponent,
     TownsGraphDetailsComponent,
     GymsGraphDetailsComponent,
-    SeanceCarouselComponent,
-    SeanceComponent
+    WorkoutCarouselComponent,
+    WorkoutComponent
   ],
   imports: [
     NguCarouselModule,

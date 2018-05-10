@@ -8,10 +8,29 @@ import {AuthService} from '../../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  mySections = [
+    {'name':'Accueil', 'routerLink':'/'},
+    {'name':'News', 'routerLink':'/news'},
+    {'name':'Communauté', 'routerLink':'/community'},
+    {'name':'Exercices', 'routerLink':'/exercises'},
+    {'name':'Séances', 'routerLink':'/workout'}
+  ]
+
+  selectedIndex: number;
+
+  select(index: number) {
+    this.selectedIndex = index;
+  }
+
+  thisFocus() {
+    this.selectedIndex = -1;
+  }
+
   constructor(public authService: AuthService) {
   }
 
   ngOnInit() {
+    this.selectedIndex = 0;
   }
 
   logout() {
