@@ -79,7 +79,7 @@ import { WorkoutWalkthroughComponent } from './components/my-workout/workout-wal
     GymsGraphDetailsComponent,
     MyWorkoutComponent,
     WorkoutGeneratorComponent,
-    WorkoutWalkthroughComponent
+    WorkoutWalkthroughComponent,
     WorkoutCarouselComponent,
     WorkoutComponent,
     UserCarouselComponent
