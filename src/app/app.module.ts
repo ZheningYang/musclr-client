@@ -42,6 +42,7 @@ import { GymsGraphDetailsComponent } from './components/dashboard/graph-display/
 import { UsersGraphDetailsService } from './components/dashboard/graph-display/graph-drawer/graph-details/users-graph-details/users-graph-details.service';
 import { WorkoutCarouselComponent } from './components/workout-carousel/workout-carousel.component';
 import { WorkoutComponent } from './components/workout/workout.component';
+import { UserCarouselComponent } from './components/user-carousel/user-carousel.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { WorkoutComponent } from './components/workout/workout.component';
     TownsGraphDetailsComponent,
     GymsGraphDetailsComponent,
     WorkoutCarouselComponent,
-    WorkoutComponent
+    WorkoutComponent,
+    UserCarouselComponent
   ],
   imports: [
     NguCarouselModule,

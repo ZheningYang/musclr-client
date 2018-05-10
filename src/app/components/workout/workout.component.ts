@@ -5,7 +5,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
   templateUrl: './workout.component.html',
   styleUrls: ['./workout.component.scss']
 })
-export class WorkoutComponent implements OnInit {
+export class WorkoutComponent implements OnInit, OnDestroy {
 
 
   mySeances = [
@@ -82,6 +82,11 @@ export class WorkoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    (document.getElementsByClassName('navbar').item(0) as HTMLElement).style.backgroundColor = 'black';
+  }
+
+  ngOnDestroy() {
+    (document.getElementsByClassName('navbar').item(0) as HTMLElement).style.backgroundColor = 'transparent';
   }
 
 }

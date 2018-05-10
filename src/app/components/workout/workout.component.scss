@@ -1,0 +1,60 @@
+#seances {
+
+  min-height: 100vmin;
+
+  .container {
+    max-width: 80%;
+  }
+
+  .active {
+    background-color: black !important;
+    color: white !important;
+  }
+
+  .single-news {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1.5rem;
+
+    a .fa-angle-right {
+      float: right;
+    }
+  }
+
+  .single-news:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    .view {
+      margin-bottom: 0;
+    }
+  }
+
+  .view {
+    margin-bottom: 2rem;
+    overflow: hidden;
+    position: relative;
+    cursor: default;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .rating {
+    color: #ffa000;
+    list-style-type: none;
+    padding: 0;
+    li {
+      display: inline-block;
+    }
+  }
+
+  .freeze{
+    position: fixed;
+  }
+  .afterFreeze{
+    margin-left: 50vh;
+  }
+}
+
+

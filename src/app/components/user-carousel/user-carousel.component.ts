@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NguCarousel } from '@ngu/carousel';
+import {NguCarousel} from '@ngu/carousel';
 
 @Component({
-  selector: 'app-seance-carousel',
-  templateUrl: './workout-carousel.component.html',
-  styleUrls: ['./workout-carousel.component.scss']
+  selector: 'app-user-carousel',
+  templateUrl: './user-carousel.component.html',
+  styleUrls: ['./user-carousel.component.scss']
 })
-export class WorkoutCarouselComponent implements OnInit {
+export class UserCarouselComponent implements OnInit {
   public carouselOne: NguCarousel;
 
   ngOnInit() {
